@@ -1,8 +1,30 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
+import 'mainscreen.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(MaterialApp(
+    home: CarpetInnApp(),
+  ));
+}
 
-class MyApp extends StatelessWidget {
+class CarpetInnApp extends StatefulWidget {
+  @override
+  CarpetInnAppState createState() => new CarpetInnAppState();
+}
+
+class CarpetInnAppState extends State<CarpetInnApp> {
+  @override
+  void initState() {
+    super.initState();
+    Timer(
+        Duration(seconds: 3),
+            () => Navigator.of(context).pushReplacement(MaterialPageRoute(
+            builder: (BuildContext context) => MainScreen(
+              title: "Carpet Inn",
+            ))));
+  }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
