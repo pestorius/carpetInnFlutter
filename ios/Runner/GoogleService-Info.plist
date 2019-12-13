@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>868566083566-b81moqmhats6q28hrgfnk0bnaaamalis.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.868566083566-b81moqmhats6q28hrgfnk0bnaaamalis</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>868566083566-afn512tb1539pkjjeduf0ebttufoqo3d.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAOdUfXRguNGKtkpfNlQkt9Yhb_ZV9wa9E</string>
+	<key>GCM_SENDER_ID</key>
+	<string>868566083566</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.pestorius.carpetinnFlutter</string>
+	<key>PROJECT_ID</key>
+	<string>carpet-inn</string>
+	<key>STORAGE_BUCKET</key>
+	<string>carpet-inn.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:868566083566:ios:9c2acab9a372f299af50ff</string>
+	<key>DATABASE_URL</key>
+	<string>https://carpet-inn.firebaseio.com</string>
+</dict>
+</plist>

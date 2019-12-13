@@ -1,0 +1,91 @@
+{
+  "project_info": {
+    "project_number": "868566083566",
+    "firebase_url": "https://carpet-inn.firebaseio.com",
+    "project_id": "carpet-inn",
+    "storage_bucket": "carpet-inn.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:868566083566:android:f9aecfa4b5c18228af50ff",
+        "android_client_info": {
+          "package_name": "com.example.carpetinnpopulatefirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "868566083566-afn512tb1539pkjjeduf0ebttufoqo3d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.carpetinnpopulatefirebase",
+            "certificate_hash": "e03ad21f8c9dd14e3f9510a7a0405553363e0c2a"
+          }
+        },
+        {
+          "client_id": "868566083566-rr23h5sm64bmkgrd0klq7pucu8h5jmj7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPjBg64Ohmmm03iAM4msCcNp_8DBrbAKo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "868566083566-rr23h5sm64bmkgrd0klq7pucu8h5jmj7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "868566083566-b81moqmhats6q28hrgfnk0bnaaamalis.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.pestorius.carpetinnFlutter"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:868566083566:android:99f73da2b2dadf2daf50ff",
+        "android_client_info": {
+          "package_name": "com.pestorius.carpetinn_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "868566083566-rr23h5sm64bmkgrd0klq7pucu8h5jmj7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPjBg64Ohmmm03iAM4msCcNp_8DBrbAKo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "868566083566-rr23h5sm64bmkgrd0klq7pucu8h5jmj7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "868566083566-b81moqmhats6q28hrgfnk0bnaaamalis.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.pestorius.carpetinnFlutter"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
