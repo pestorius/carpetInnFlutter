@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
+import 'package:firebase_database/firebase_database.dart';
 import 'mainscreen.dart';
 
 void main() {
@@ -17,12 +18,41 @@ class CarpetInnAppState extends State<CarpetInnApp> {
   @override
   void initState() {
     super.initState();
-    Timer(
+    fetchDataFromFirebase();
+    /*Timer(
         Duration(seconds: 3),
-            () => Navigator.of(context).pushReplacement(MaterialPageRoute(
+        () => Navigator.of(context).pushReplacement(MaterialPageRoute(
             builder: (BuildContext context) => MainScreen(
-              title: "Carpet Inn",
-            ))));
+                  title: "Carpet Inn",
+                ))));*/
+    /*Future<void> prepareToNavigate() async => {
+
+      await organizeData();
+    };*/
+  }
+
+  Future<void> fetchDataFromFirebase() async{
+    var hashMap = await organizeData();
+    //print(hashMap);
+    //print(await organizeData());
+    return Future.delayed(Duration(seconds: 3), () => Navigator.of(context).pushReplacement(MaterialPageRoute(
+        builder: (BuildContext context) => MainScreen(
+          title: "Carpet Inn",
+          carpetsHashMap: hashMap,
+        ))));
+  }
+
+  dynamic organizeData() {
+    //var data;
+    var databaseReference = FirebaseDatabase.instance.reference();
+    return databaseReference.once().then((DataSnapshot snapshot) {
+      // var carpets = [];
+      var data = snapshot.value;
+      return data;
+      // data.forEach((k, v) => print(k));
+    });
+    //print('Data: $data');
+    //return data;
   }
 
   // This widget is the root of your application.
