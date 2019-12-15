@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:transparent_image/transparent_image.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 /*void main() {
   runApp(MainScreen());
 }*/
@@ -43,20 +44,37 @@ class MainScreen extends StatelessWidget {
             // getRecord();
           },
           child: GridView.builder(
-            gridDelegate:
-                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3, childAspectRatio: 0.63),
             itemBuilder: (context, position) {
-              return Stack(
-                children: <Widget>[
-                  Center(child: CircularProgressIndicator()),
-                  FadeInImage.memoryNetwork(
-                    placeholder: kTransparentImage,
-                    image: carpetsList[position]['imageUrl'],
-                  ),
-                ],
-              );
+              return Center(
+                  child: Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: Column(
+                        children: <Widget>[
+                          CachedNetworkImage(
+                            height: 120.0,
+                            fit: BoxFit.fill,
+                            placeholder: (context, url) =>
+                                new CircularProgressIndicator(),
+                            imageUrl: carpetsList[position]['imageUrl'],
+                            errorWidget: (context, url, error) =>
+                                new Icon(Icons.error),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.all(10.0),
+                            child: Text(carpetsList[position]['design'],
+                                textAlign: TextAlign.center,
+                                style: TextStyle(fontSize: 15.0)),
+                          ),
+                          Text.rich(TextSpan(
+                              text: carpetsList[position]['size'],
+                              style: TextStyle(fontSize: 15.0),
+                              children: <TextSpan>[TextSpan(text: ' cm')])),
+                        ],
+                      )));
             },
-            itemCount: 5,
+            itemCount: carpetsList.length,
           ),
         ),
       ),
