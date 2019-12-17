@@ -20,15 +20,16 @@ import 'package:cached_network_image/cached_network_image.dart';
   }
 }*/
 class MainScreen extends StatelessWidget {
-  MainScreen({Key key, this.title, @required this.carpetsHashMap})
+  MainScreen({Key key, this.title, this.handKnottedList, this.kilimList, this.machineMadeList})
       : super(key: key);
   final String title;
-  final dynamic carpetsHashMap;
+  final dynamic handKnottedList;
+  final dynamic kilimList;
+  final dynamic machineMadeList;
   final databaseReference = FirebaseDatabase.instance.reference();
 
   @override
   Widget build(BuildContext context) {
-    var carpetsList = carpetsHashMap.values.toList();
     //print(carpetsList[0]);
     return Scaffold(
       appBar: AppBar(
@@ -57,24 +58,24 @@ class MainScreen extends StatelessWidget {
                             fit: BoxFit.fill,
                             placeholder: (context, url) =>
                                 new CircularProgressIndicator(),
-                            imageUrl: carpetsList[position]['imageUrl'],
+                            imageUrl: handKnottedList[position]['imageUrl'],
                             errorWidget: (context, url, error) =>
                                 new Icon(Icons.error),
                           ),
                           Padding(
                             padding: EdgeInsets.all(10.0),
-                            child: Text(carpetsList[position]['design'],
+                            child: Text(handKnottedList[position]['design'],
                                 textAlign: TextAlign.center,
                                 style: TextStyle(fontSize: 15.0)),
                           ),
                           Text.rich(TextSpan(
-                              text: carpetsList[position]['size'],
+                              text: handKnottedList[position]['size'],
                               style: TextStyle(fontSize: 15.0),
                               children: <TextSpan>[TextSpan(text: ' cm')])),
                         ],
                       )));
             },
-            itemCount: carpetsList.length,
+            itemCount: handKnottedList.length,
           ),
         ),
       ),

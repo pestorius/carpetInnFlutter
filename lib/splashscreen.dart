@@ -19,40 +19,43 @@ class CarpetInnAppState extends State<CarpetInnApp> {
   void initState() {
     super.initState();
     fetchDataFromFirebase();
-    /*Timer(
-        Duration(seconds: 3),
-        () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (BuildContext context) => MainScreen(
-                  title: "Carpet Inn",
-                ))));*/
-    /*Future<void> prepareToNavigate() async => {
-
-      await organizeData();
-    };*/
   }
 
   Future<void> fetchDataFromFirebase() async{
-    var hashMap = await organizeData();
-    //print(hashMap);
-    //print(await organizeData());
+    var carpetLists = await organizeData();
     return Future.delayed(Duration(seconds: 3), () => Navigator.of(context).pushReplacement(MaterialPageRoute(
         builder: (BuildContext context) => MainScreen(
           title: "Carpet Inn",
-          carpetsHashMap: hashMap,
+          handKnottedList: carpetLists[0],
+          kilimList: carpetLists[1],
+          machineMadeList: carpetLists[2]
         ))));
   }
 
   dynamic organizeData() {
-    //var data;
+    var handKnottedList = [];
+    var kilimList = [];
+    var machineMadeList = [];
+
     var databaseReference = FirebaseDatabase.instance.reference();
     return databaseReference.once().then((DataSnapshot snapshot) {
-      // var carpets = [];
-      var data = snapshot.value;
-      return data;
-      // data.forEach((k, v) => print(k));
+      var list = snapshot.value.values.toList();
+      for(var i = 0; i < list.length; i++) {
+        if(list[i]['category'] == 'Hand-Knotted') {
+          handKnottedList.add(list[i]);
+        }
+        else if(list[i]['category'] == 'Kilim') {
+          kilimList.add(list[i]);
+        }
+        else if(list[i]['category'] == 'Machine Made') {
+          machineMadeList.add(list[i]);
+        }
+      }
+      print(handKnottedList.length);
+      print(kilimList.length);
+      print(machineMadeList.length);
+      return [handKnottedList, kilimList, machineMadeList];
     });
-    //print('Data: $data');
-    //return data;
   }
 
   // This widget is the root of your application.
