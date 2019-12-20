@@ -25,6 +25,8 @@ class MainScreen extends StatelessWidget {
           appBar: AppBar(
             bottom: TabBar(
               labelColor: Colors.black,
+              labelStyle:
+                  TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),
               tabs: <Widget>[
                 Tab(
                   text: 'Hand-Knotted',
@@ -40,10 +42,10 @@ class MainScreen extends StatelessWidget {
             title: Text(
               this.title,
               style: TextStyle(
-                color: Colors.black,
-                //fontFamily: 'Lora',
-                //fontSize: 24.0
-              ),
+                  color: Color.fromRGBO(43, 14, 230, 1),
+                  fontFamily: 'Lora',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 22.0),
             ),
             backgroundColor: Colors.white,
           ),
@@ -60,7 +62,8 @@ class MainScreen extends StatelessWidget {
   }
 
   Widget tabBodies(var carpetsList) {
-    return Center(
+    return Padding(
+      padding: EdgeInsets.only(top: 20.0),
       child: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 3, childAspectRatio: 0.63),
@@ -80,7 +83,7 @@ class MainScreen extends StatelessWidget {
                             new Icon(Icons.error),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(10.0),
+                        padding: EdgeInsets.only(top: 10, bottom: 5),
                         child: Text(carpetsList[position]['design'],
                             textAlign: TextAlign.center,
                             style: TextStyle(fontSize: 15.0)),
