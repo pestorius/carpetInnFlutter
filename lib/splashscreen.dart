@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:firebase_database/firebase_database.dart';
 import 'mainscreen.dart';
+import 'dart:convert';
+import "dart:math";
 
 void main() {
   runApp(MaterialApp(
@@ -15,15 +17,18 @@ class CarpetInnApp extends StatefulWidget {
 }
 
 class CarpetInnAppState extends State<CarpetInnApp> {
+  var backgroundPic;
+
   @override
   void initState() {
     super.initState();
     fetchDataFromFirebase();
+    pickBackground();
   }
 
   Future<void> fetchDataFromFirebase() async{
     var carpetLists = await organizeData();
-    return Future.delayed(Duration(seconds: 3), () => Navigator.of(context).pushReplacement(MaterialPageRoute(
+    return Future.delayed(Duration(seconds: 10), () => Navigator.of(context).pushReplacement(MaterialPageRoute(
         builder: (BuildContext context) => MainScreen(
           title: "Carpet Inn",
           handKnottedList: carpetLists[0],
@@ -58,6 +63,24 @@ class CarpetInnAppState extends State<CarpetInnApp> {
     });
   }
 
+  Future pickBackground() async {
+    // >> To get paths you need these 2 lines
+    final manifestContent = await DefaultAssetBundle.of(context).loadString('AssetManifest.json');
+
+    final Map<String, dynamic> manifestMap = json.decode(manifestContent);
+    // >> To get paths you need these 2 lines
+
+    final imagePaths = manifestMap.keys
+        .where((String key) => key.contains('assets/'))
+        .where((String key) => key.contains('.jpg'))
+        .toList();
+
+    setState(() {
+      final _random = new Random();
+      backgroundPic = imagePaths[_random.nextInt(imagePaths.length)];
+    });
+  }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -66,15 +89,16 @@ class CarpetInnAppState extends State<CarpetInnApp> {
       theme: ThemeData(
         primarySwatch: Colors.amber,
       ),
-      home: SplashScreen(),
+      home: SplashScreen(backgroundPic: backgroundPic,),
     );
   }
 }
 
 class SplashScreen extends StatelessWidget {
-  SplashScreen({Key key}) : super(key: key);
+  SplashScreen({Key key, this.backgroundPic}) : super(key: key);
   final letterspacing = 3.0;
   final logofont = 'Lora';
+  final backgroundPic;
 
   @override
   Widget build(BuildContext context) {
@@ -84,20 +108,20 @@ class SplashScreen extends StatelessWidget {
         children: <Widget>[
           Center(
             child: Image.asset(
-              "assets/splash_screen_rug.jpg",
+              backgroundPic,
               width: size.width,
               height: size.height,
-              fit: BoxFit.fitHeight,
+              fit: BoxFit.fill,
             ),
           ),
           Center(
             child: Text(
               'Carpet Inn',
               style: TextStyle(
-                  fontSize: 50,
+                  fontSize: 53,
                   foreground: Paint()
                     ..style = PaintingStyle.stroke
-                    ..strokeWidth = 4.3
+                    ..strokeWidth = 6
                     ..color = Colors.black,
                   letterSpacing: letterspacing,
                   fontFamily: logofont),
@@ -108,7 +132,7 @@ class SplashScreen extends StatelessWidget {
             child: Text(
               'Carpet Inn',
               style: TextStyle(
-                  fontSize: 50,
+                  fontSize: 53,
                   color: Colors.amber,
                   letterSpacing: letterspacing,
                   fontFamily: logofont),
@@ -122,7 +146,7 @@ class SplashScreen extends StatelessWidget {
               'owned by Petal World Sdn. Bhd.',
               textAlign: TextAlign.center,
               style: TextStyle(
-                  fontSize: 17.0,
+                  fontSize: 18.0,
                   foreground: Paint()
                     ..style = PaintingStyle.stroke
                     ..strokeWidth = 4.3
@@ -140,7 +164,7 @@ class SplashScreen extends StatelessWidget {
               'owned by Petal World Sdn. Bhd.',
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 17.0,
+                fontSize: 18.0,
                 color: Colors.amber,
                 letterSpacing: 2.0,
                 fontFamily: logofont,
