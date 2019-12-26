@@ -1,3 +1,4 @@
+import 'package:carpetinn_flutter/carpetdetailsscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -61,6 +62,8 @@ class MainScreen extends StatelessWidget {
     );
   }
 
+  void toCarpetDetailsPage(var carpet) {}
+
   Widget tabBodies(var carpetsList) {
     return Padding(
       padding: EdgeInsets.only(top: 20.0),
@@ -69,31 +72,42 @@ class MainScreen extends StatelessWidget {
             crossAxisCount: 3, childAspectRatio: 0.63),
         itemBuilder: (context, position) {
           return Center(
-              child: Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: Column(
-                    children: <Widget>[
-                      CachedNetworkImage(
-                        height: 120.0,
-                        fit: BoxFit.fill,
-                        placeholder: (context, url) =>
-                            new CircularProgressIndicator(),
-                        imageUrl: carpetsList[position]['imageUrl'],
-                        errorWidget: (context, url, error) =>
-                            new Icon(Icons.error),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 10, bottom: 5),
-                        child: Text(carpetsList[position]['design'],
-                            textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 15.0)),
-                      ),
-                      Text.rich(TextSpan(
-                          text: carpetsList[position]['size'],
-                          style: TextStyle(fontSize: 15.0),
-                          children: <TextSpan>[TextSpan(text: ' cm')])),
-                    ],
-                  )));
+            child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => CarpetDetailScreen(
+                              carpet: carpetsList[position],
+                            )),
+                  );
+                },
+                child: Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Column(
+                      children: <Widget>[
+                        CachedNetworkImage(
+                          height: 120.0,
+                          fit: BoxFit.fill,
+                          placeholder: (context, url) =>
+                              new CircularProgressIndicator(),
+                          imageUrl: carpetsList[position]['imageUrl'],
+                          errorWidget: (context, url, error) =>
+                              new Icon(Icons.error),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(top: 10, bottom: 5),
+                          child: Text(carpetsList[position]['design'],
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize: 15.0)),
+                        ),
+                        Text.rich(TextSpan(
+                            text: carpetsList[position]['size'],
+                            style: TextStyle(fontSize: 15.0),
+                            children: <TextSpan>[TextSpan(text: ' cm')])),
+                      ],
+                    ))),
+          );
         },
         itemCount: carpetsList.length,
       ),

@@ -42,6 +42,7 @@ dev_dependencies:
 
   transparent_image: 1.0.0
   cached_network_image: 2.0.0-rc
+  photo_view: 0.9.0
 
 
 # For information on the generic Dart part of this file, see the
@@ -104,3 +105,8 @@ flutter:
         - asset: fonts/Lora/Lora-BoldItalic.ttf
         - asset: fonts/Lora/Lora-Italic.ttf
         - asset: fonts/Lora/Lora-Regular.ttf
+    - family: OpenSans
+      fonts:
+        - asset: fonts/OpenSans/OpenSans-Regular.ttf
+        - asset: fonts/OpenSans/OpenSans-SemiBold.ttf
+          weight: 600

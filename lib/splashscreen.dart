@@ -26,15 +26,16 @@ class CarpetInnAppState extends State<CarpetInnApp> {
     pickBackground();
   }
 
-  Future<void> fetchDataFromFirebase() async{
+  Future<void> fetchDataFromFirebase() async {
     var carpetLists = await organizeData();
-    return Future.delayed(Duration(seconds: 10), () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (BuildContext context) => MainScreen(
-          title: "Carpet Inn",
-          handKnottedList: carpetLists[0],
-          kilimList: carpetLists[1],
-          machineMadeList: carpetLists[2]
-        ))));
+    return Future.delayed(
+        Duration(seconds: 3),
+        () => Navigator.of(context).pushReplacement(MaterialPageRoute(
+            builder: (BuildContext context) => MainScreen(
+                title: "Carpet Inn",
+                handKnottedList: carpetLists[0],
+                kilimList: carpetLists[1],
+                machineMadeList: carpetLists[2]))));
   }
 
   dynamic organizeData() {
@@ -45,14 +46,12 @@ class CarpetInnAppState extends State<CarpetInnApp> {
     var databaseReference = FirebaseDatabase.instance.reference();
     return databaseReference.once().then((DataSnapshot snapshot) {
       var list = snapshot.value.values.toList();
-      for(var i = 0; i < list.length; i++) {
-        if(list[i]['category'] == 'Hand-Knotted') {
+      for (var i = 0; i < list.length; i++) {
+        if (list[i]['category'] == 'Hand-Knotted') {
           handKnottedList.add(list[i]);
-        }
-        else if(list[i]['category'] == 'Kilim') {
+        } else if (list[i]['category'] == 'Kilim') {
           kilimList.add(list[i]);
-        }
-        else if(list[i]['category'] == 'Machine Made') {
+        } else if (list[i]['category'] == 'Machine Made') {
           machineMadeList.add(list[i]);
         }
       }
@@ -65,7 +64,8 @@ class CarpetInnAppState extends State<CarpetInnApp> {
 
   Future pickBackground() async {
     // >> To get paths you need these 2 lines
-    final manifestContent = await DefaultAssetBundle.of(context).loadString('AssetManifest.json');
+    final manifestContent =
+        await DefaultAssetBundle.of(context).loadString('AssetManifest.json');
 
     final Map<String, dynamic> manifestMap = json.decode(manifestContent);
     // >> To get paths you need these 2 lines
@@ -89,7 +89,9 @@ class CarpetInnAppState extends State<CarpetInnApp> {
       theme: ThemeData(
         primarySwatch: Colors.amber,
       ),
-      home: SplashScreen(backgroundPic: backgroundPic,),
+      home: SplashScreen(
+        backgroundPic: backgroundPic ?? 'assets/6983.jpg',
+      ),
     );
   }
 }
