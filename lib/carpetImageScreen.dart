@@ -14,9 +14,6 @@ class CarpetImageScreen extends StatelessWidget {
         elevation: 0,
       ),
       body: Container(
-        decoration: new BoxDecoration(
-          color: Colors.green,
-        ),
         child: GestureDetector(
           onTap: () {
             Navigator.pop(context);

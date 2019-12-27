@@ -68,17 +68,18 @@ class CarpetDetailScreen extends StatelessWidget {
                         return CarpetImageScreen(image: carpetImage);
                       }));
                     },
-                    child: Hero(
-                      tag: 'imageHero',
                       child: Container(
                         height: MediaQuery.of(context).size.height * 0.5,
                         child: ClipRect(
-                          child: PhotoView(
-                            backgroundDecoration:
-                                BoxDecoration(color: Colors.white),
-                            imageProvider: carpetImage,
+                          child: Hero(
+                            tag: 'imageHero',
+                            child: PhotoView(
+                              backgroundDecoration:
+                                  BoxDecoration(color: Colors.white),
+                              imageProvider: carpetImage,
+                            ),
                           ),
-                        ),
+
                       ),
                     ),
                   ),
