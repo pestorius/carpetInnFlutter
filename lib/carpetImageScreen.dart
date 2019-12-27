@@ -21,9 +21,12 @@ class CarpetImageScreen extends StatelessWidget {
           onTap: () {
             Navigator.pop(context);
           },
-          child: PhotoView(
-            backgroundDecoration: BoxDecoration(color: Colors.white),
-            imageProvider: image,
+          child: Hero(
+            tag: 'imageHero',
+            child: PhotoView(
+              backgroundDecoration: BoxDecoration(color: Colors.white),
+              imageProvider: image,
+            ),
           ),
         ),
       ),
