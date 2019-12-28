@@ -135,7 +135,7 @@ class CarpetDetailScreen extends StatelessWidget {
                     ),
                   ),
                   shape: RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(12.0),
+                    borderRadius: BorderRadius.circular(12.0),
                   ),
                 ),
               ),
