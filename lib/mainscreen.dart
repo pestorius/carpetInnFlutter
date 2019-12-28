@@ -1,116 +1,110 @@
+import 'package:carpetinn_flutter/aboutusscreen.dart';
 import 'package:carpetinn_flutter/carpetdetailsscreen.dart';
+import 'package:carpetinn_flutter/favoritesscreen.dart';
+import 'package:carpetinn_flutter/homescreen.dart';
+import 'package:carpetinn_flutter/searchscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'homescreen.dart';
 
-class MainScreen extends StatelessWidget {
-  MainScreen(
+class Main extends StatefulWidget {
+  Main(
       {Key key,
       this.title,
       this.handKnottedList,
       this.kilimList,
-      this.machineMadeList})
-      : super(key: key);
+      this.machineMadeList});
+  final String title;
+  final dynamic handKnottedList;
+  final dynamic kilimList;
+  final dynamic machineMadeList;
+  @override
+  State<StatefulWidget> createState() {
+    return MainState(
+        title: title,
+        handKnottedList: handKnottedList,
+        kilimList: kilimList,
+        machineMadeList: machineMadeList);
+  }
+}
+
+class MainState extends State<Main> {
+  MainState(
+      {Key key,
+      this.title,
+      this.handKnottedList,
+      this.kilimList,
+      this.machineMadeList});
   final String title;
   final dynamic handKnottedList;
   final dynamic kilimList;
   final dynamic machineMadeList;
   final databaseReference = FirebaseDatabase.instance.reference();
+  int currentIndex = 0;
+  List<Widget> children = [];
+
+  @override
+  void initState() {
+    super.initState();
+    children = [
+      HomeScreen(
+          title: title,
+          handKnottedList: handKnottedList,
+          kilimList: kilimList,
+          machineMadeList: machineMadeList),
+      SearchScreen(),
+      FavoritesScreen(),
+      AboutUsScreen()
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: DefaultTabController(
-        length: 3,
-        child: Scaffold(
-          appBar: AppBar(
-            bottom: TabBar(
-              labelColor: Colors.black,
-              labelStyle:
-                  TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),
-              tabs: <Widget>[
-                Tab(
-                  text: 'Hand-Knotted',
-                ),
-                Tab(
-                  text: "Kilim",
-                ),
-                Tab(
-                  text: "Machine Made",
-                )
-              ],
+    return Scaffold(
+      appBar: null,
+      body: children[currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+          onTap: onTabTapped,
+          currentIndex: currentIndex,
+          type: BottomNavigationBarType.fixed,
+          selectedItemColor: Colors.amber,
+          unselectedItemColor: Colors.grey,
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              title: Text(
+                'Home',
+              ),
             ),
-            title: Text(
-              this.title,
-              style: TextStyle(
-                  color: Color.fromRGBO(43, 14, 230, 1),
-                  fontFamily: 'Lora',
-                  fontWeight: FontWeight.bold,
-                  fontSize: 22.0),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.search,
+              ),
+              title: Text(
+                'Search',
+              ),
             ),
-            backgroundColor: Colors.white,
-          ),
-          body: TabBarView(
-            children: <Widget>[
-              tabBodies(handKnottedList),
-              tabBodies(kilimList),
-              tabBodies(machineMadeList)
-            ],
-          ),
-        ),
-      ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.star,
+              ),
+              title: Text('Favorites'),
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.info,
+                ),
+                title: Text(
+                  'About Us',
+                ))
+          ]),
     );
   }
 
-  void toCarpetDetailsPage(var carpet) {}
-
-  Widget tabBodies(var carpetsList) {
-    return Padding(
-      padding: EdgeInsets.only(top: 20.0),
-      child: GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3, childAspectRatio: 0.63),
-        itemBuilder: (context, position) {
-          return Center(
-            child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => CarpetDetailScreen(
-                              carpet: carpetsList[position],
-                            )),
-                  );
-                },
-                child: Padding(
-                    padding: EdgeInsets.all(10.0),
-                    child: Column(
-                      children: <Widget>[
-                        CachedNetworkImage(
-                          height: 120.0,
-                          fit: BoxFit.fill,
-                          placeholder: (context, url) =>
-                              new CircularProgressIndicator(),
-                          imageUrl: carpetsList[position]['imageUrl'],
-                          errorWidget: (context, url, error) =>
-                              new Icon(Icons.error),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(top: 10, bottom: 5),
-                          child: Text(carpetsList[position]['design'],
-                              textAlign: TextAlign.center,
-                              style: TextStyle(fontSize: 15.0)),
-                        ),
-                        Text.rich(TextSpan(
-                            text: carpetsList[position]['size'],
-                            style: TextStyle(fontSize: 15.0),
-                            children: <TextSpan>[TextSpan(text: ' cm')])),
-                      ],
-                    ))),
-          );
-        },
-        itemCount: carpetsList.length,
-      ),
-    );
+  void onTabTapped(int index) {
+    setState(() {
+      currentIndex = index;
+    });
   }
 }

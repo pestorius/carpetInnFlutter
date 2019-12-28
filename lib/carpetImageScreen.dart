@@ -14,16 +14,11 @@ class CarpetImageScreen extends StatelessWidget {
         elevation: 0,
       ),
       body: Container(
-        child: GestureDetector(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          child: Hero(
-            tag: 'imageHero',
-            child: PhotoView(
-              backgroundDecoration: BoxDecoration(color: Colors.white),
-              imageProvider: image,
-            ),
+        child: Hero(
+          tag: 'imageHero',
+          child: PhotoView(
+            backgroundDecoration: BoxDecoration(color: Colors.white),
+            imageProvider: image,
           ),
         ),
       ),

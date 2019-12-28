@@ -31,7 +31,7 @@ class CarpetInnAppState extends State<CarpetInnApp> {
     return Future.delayed(
         Duration(seconds: 3),
         () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (BuildContext context) => MainScreen(
+            builder: (BuildContext context) => Main(
                 title: "Carpet Inn",
                 handKnottedList: carpetLists[0],
                 kilimList: carpetLists[1],
