@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:photo_view/photo_view.dart';
 import 'package:string_validator/string_validator.dart';
 import 'package:carpetinn_flutter/carpetdetailsscreen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class SearchScreen extends StatelessWidget {
   SearchScreen(
-      {Key key, this.handKnottedList, this.kilimList, this.machineMadeList})
+      {Key key,
+      this.handKnottedList,
+      this.kilimList,
+      this.machineMadeList,
+      this.favoritesMap})
       : super(key: key);
   final dynamic handKnottedList;
   final dynamic kilimList;
   final dynamic machineMadeList;
+  final dynamic favoritesMap;
 
   @override
   Widget build(BuildContext context) {

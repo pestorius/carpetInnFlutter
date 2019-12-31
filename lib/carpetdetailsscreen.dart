@@ -1,13 +1,39 @@
 import 'package:carpetinn_flutter/carpetImageScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
+import 'package:carpetinn_flutter/splashscreen.dart';
+import 'dart:convert';
 
-class CarpetDetailScreen extends StatelessWidget {
-  CarpetDetailScreen({Key key, this.carpet}) : super(key: key);
+class CarpetDetailScreen extends StatefulWidget {
+  CarpetDetailScreen({Key key, this.carpet, this.favoritesMap})
+      : super(key: key);
   final dynamic carpet;
+  final dynamic favoritesMap;
+
+  @override
+  CarpetDetailScreenState createState() =>
+      CarpetDetailScreenState(carpet: carpet, favoritesMap: favoritesMap);
+}
+
+class CarpetDetailScreenState extends State<CarpetDetailScreen> {
+  CarpetDetailScreenState({Key key, this.carpet, this.favoritesMap});
+  final dynamic carpet;
+  final dynamic favoritesMap;
+  var isFavorited = false;
+
+  @override
+  void initState() {
+    super.initState();
+    if (favoritesMap.containsKey(carpet['id'])) {
+      isFavorited = true;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    //storage
+    FavoritesStorage storage = FavoritesStorage();
+
     //carpet variables
     var age = carpet['age'];
     var carpetUrl = carpet['carpetUrl'];
@@ -39,6 +65,23 @@ class CarpetDetailScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           actions: <Widget>[
+            isFavorited ?
+            IconButton(
+              tooltip: 'Unfavorite',
+              icon: const Icon(
+                Icons.star,
+                color: Colors.amberAccent,
+                size: 35.0,
+              ),
+              onPressed: () {
+                setState(() {
+                  isFavorited = false;
+                });
+                favoritesMap.remove(carpet['id']);
+                storage.writeFavorites(json.encode(favoritesMap));
+                print(favoritesMap);
+              },
+            ) :
             IconButton(
               tooltip: 'Favorite',
               icon: const Icon(
@@ -46,7 +89,14 @@ class CarpetDetailScreen extends StatelessWidget {
                 color: Colors.amberAccent,
                 size: 35.0,
               ),
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  isFavorited = true;
+                });
+                favoritesMap[carpet['id'].toString()] = carpet;
+                storage.writeFavorites(json.encode(favoritesMap));
+                print(favoritesMap);
+              },
             )
           ],
           backgroundColor: Colors.white,
@@ -68,18 +118,17 @@ class CarpetDetailScreen extends StatelessWidget {
                         return CarpetImageScreen(image: carpetImage);
                       }));
                     },
-                      child: Container(
-                        height: MediaQuery.of(context).size.height * 0.5,
-                        child: ClipRect(
-                          child: Hero(
-                            tag: 'imageHero',
-                            child: PhotoView(
-                              backgroundDecoration:
-                                  BoxDecoration(color: Colors.white),
-                              imageProvider: carpetImage,
-                            ),
+                    child: Container(
+                      height: MediaQuery.of(context).size.height * 0.5,
+                      child: ClipRect(
+                        child: Hero(
+                          tag: 'imageHero',
+                          child: PhotoView(
+                            backgroundDecoration:
+                                BoxDecoration(color: Colors.white),
+                            imageProvider: carpetImage,
                           ),
-
+                        ),
                       ),
                     ),
                   ),

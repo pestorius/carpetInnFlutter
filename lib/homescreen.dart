@@ -5,16 +5,16 @@ import 'package:cached_network_image/cached_network_image.dart';
 class HomeScreen extends StatelessWidget {
   HomeScreen(
       {Key key,
-        this.title,
-        this.handKnottedList,
-        this.kilimList,
-        this.machineMadeList});
+      this.title,
+      this.handKnottedList,
+      this.kilimList,
+      this.machineMadeList,
+      this.favoritesMap});
   final String title;
   final dynamic handKnottedList;
   final dynamic kilimList;
   final dynamic machineMadeList;
-
-
+  final dynamic favoritesMap;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,8 @@ class HomeScreen extends StatelessWidget {
             backgroundColor: Colors.white,
             bottom: TabBar(
               labelColor: Colors.black,
-              labelStyle: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),
+              labelStyle:
+                  TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),
               tabs: <Widget>[
                 Tab(
                   text: 'Hand-Knotted',
@@ -74,8 +75,9 @@ class HomeScreen extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) => CarpetDetailScreen(
-                          carpet: carpetsList[position],
-                        )),
+                              carpet: carpetsList[position],
+                              favoritesMap: favoritesMap,
+                            )),
                   );
                 },
                 child: Padding(
@@ -86,10 +88,10 @@ class HomeScreen extends StatelessWidget {
                           height: 120.0,
                           fit: BoxFit.fill,
                           placeholder: (context, url) =>
-                          new CircularProgressIndicator(),
+                              new CircularProgressIndicator(),
                           imageUrl: carpetsList[position]['imageUrl'],
                           errorWidget: (context, url, error) =>
-                          new Icon(Icons.error),
+                              new Icon(Icons.error),
                         ),
                         Padding(
                           padding: EdgeInsets.only(top: 10, bottom: 5),

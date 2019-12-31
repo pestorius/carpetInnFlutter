@@ -1,11 +1,9 @@
 import 'package:carpetinn_flutter/aboutusscreen.dart';
-import 'package:carpetinn_flutter/carpetdetailsscreen.dart';
 import 'package:carpetinn_flutter/favoritesscreen.dart';
 import 'package:carpetinn_flutter/homescreen.dart';
 import 'package:carpetinn_flutter/searchscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'homescreen.dart';
 
 class Main extends StatefulWidget {
@@ -14,18 +12,21 @@ class Main extends StatefulWidget {
       this.title,
       this.handKnottedList,
       this.kilimList,
-      this.machineMadeList});
+      this.machineMadeList,
+      this.favoritesMap});
   final String title;
   final dynamic handKnottedList;
   final dynamic kilimList;
   final dynamic machineMadeList;
+  final dynamic favoritesMap;
   @override
   State<StatefulWidget> createState() {
     return MainState(
         title: title,
         handKnottedList: handKnottedList,
         kilimList: kilimList,
-        machineMadeList: machineMadeList);
+        machineMadeList: machineMadeList,
+        favoritesMap: favoritesMap);
   }
 }
 
@@ -35,11 +36,13 @@ class MainState extends State<Main> {
       this.title,
       this.handKnottedList,
       this.kilimList,
-      this.machineMadeList});
+      this.machineMadeList,
+      this.favoritesMap});
   final String title;
   final dynamic handKnottedList;
   final dynamic kilimList;
   final dynamic machineMadeList;
+  final dynamic favoritesMap;
   final databaseReference = FirebaseDatabase.instance.reference();
   int currentIndex = 0;
   List<Widget> children = [];
@@ -49,14 +52,18 @@ class MainState extends State<Main> {
     super.initState();
     children = [
       HomeScreen(
-          title: title,
-          handKnottedList: handKnottedList,
-          kilimList: kilimList,
-          machineMadeList: machineMadeList),
+        title: title,
+        handKnottedList: handKnottedList,
+        kilimList: kilimList,
+        machineMadeList: machineMadeList,
+        favoritesMap: favoritesMap,
+      ),
       SearchScreen(
-          handKnottedList: handKnottedList,
-          kilimList: kilimList,
-          machineMadeList: machineMadeList),
+        handKnottedList: handKnottedList,
+        kilimList: kilimList,
+        machineMadeList: machineMadeList,
+        favoritesMap: favoritesMap,
+      ),
       FavoritesScreen(),
       AboutUsScreen()
     ];
