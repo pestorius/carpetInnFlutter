@@ -53,7 +53,10 @@ class MainState extends State<Main> {
           handKnottedList: handKnottedList,
           kilimList: kilimList,
           machineMadeList: machineMadeList),
-      SearchScreen(),
+      SearchScreen(
+          handKnottedList: handKnottedList,
+          kilimList: kilimList,
+          machineMadeList: machineMadeList),
       FavoritesScreen(),
       AboutUsScreen()
     ];
