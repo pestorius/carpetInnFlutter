@@ -12,21 +12,18 @@ class Main extends StatefulWidget {
       this.title,
       this.handKnottedList,
       this.kilimList,
-      this.machineMadeList,
-      this.favoritesMap});
+      this.machineMadeList,});
   final String title;
   final dynamic handKnottedList;
   final dynamic kilimList;
   final dynamic machineMadeList;
-  final dynamic favoritesMap;
   @override
   State<StatefulWidget> createState() {
     return MainState(
         title: title,
         handKnottedList: handKnottedList,
         kilimList: kilimList,
-        machineMadeList: machineMadeList,
-        favoritesMap: favoritesMap);
+        machineMadeList: machineMadeList);
   }
 }
 
@@ -36,13 +33,11 @@ class MainState extends State<Main> {
       this.title,
       this.handKnottedList,
       this.kilimList,
-      this.machineMadeList,
-      this.favoritesMap});
+      this.machineMadeList});
   final String title;
   final dynamic handKnottedList;
   final dynamic kilimList;
   final dynamic machineMadeList;
-  final dynamic favoritesMap;
   final databaseReference = FirebaseDatabase.instance.reference();
   int currentIndex = 0;
   List<Widget> children = [];
@@ -55,14 +50,12 @@ class MainState extends State<Main> {
         title: title,
         handKnottedList: handKnottedList,
         kilimList: kilimList,
-        machineMadeList: machineMadeList,
-        favoritesMap: favoritesMap,
+        machineMadeList: machineMadeList
       ),
       SearchScreen(
         handKnottedList: handKnottedList,
         kilimList: kilimList,
         machineMadeList: machineMadeList,
-        favoritesMap: favoritesMap,
       ),
       FavoritesScreen(),
       AboutUsScreen()

@@ -53,7 +53,6 @@ class CarpetInnAppState extends State<CarpetInnApp> {
                   handKnottedList: carpetLists[0],
                   kilimList: carpetLists[1],
                   machineMadeList: carpetLists[2],
-                  favoritesMap: favoritesHashMap,
                 ))));
   }
 

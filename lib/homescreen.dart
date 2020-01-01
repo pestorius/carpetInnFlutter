@@ -8,13 +8,11 @@ class HomeScreen extends StatelessWidget {
       this.title,
       this.handKnottedList,
       this.kilimList,
-      this.machineMadeList,
-      this.favoritesMap});
+      this.machineMadeList});
   final String title;
   final dynamic handKnottedList;
   final dynamic kilimList;
   final dynamic machineMadeList;
-  final dynamic favoritesMap;
 
   @override
   Widget build(BuildContext context) {
@@ -75,8 +73,7 @@ class HomeScreen extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) => CarpetDetailScreen(
-                              carpet: carpetsList[position],
-                              favoritesMap: favoritesMap,
+                              carpet: carpetsList[position]
                             )),
                   );
                 },

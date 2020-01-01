@@ -5,28 +5,34 @@ import 'package:carpetinn_flutter/splashscreen.dart';
 import 'dart:convert';
 
 class CarpetDetailScreen extends StatefulWidget {
-  CarpetDetailScreen({Key key, this.carpet, this.favoritesMap})
+  CarpetDetailScreen({Key key, this.carpet})
       : super(key: key);
   final dynamic carpet;
-  final dynamic favoritesMap;
 
   @override
   CarpetDetailScreenState createState() =>
-      CarpetDetailScreenState(carpet: carpet, favoritesMap: favoritesMap);
+      CarpetDetailScreenState(carpet: carpet);
 }
 
 class CarpetDetailScreenState extends State<CarpetDetailScreen> {
-  CarpetDetailScreenState({Key key, this.carpet, this.favoritesMap});
+  CarpetDetailScreenState({Key key, this.carpet});
   final dynamic carpet;
-  final dynamic favoritesMap;
   var isFavorited = false;
+  var favoritesMap;
+  FavoritesStorage storage = FavoritesStorage();
 
   @override
   void initState() {
     super.initState();
-    if (favoritesMap.containsKey(carpet['id'])) {
-      isFavorited = true;
-    }
+    storage.readFavorites().then((String value) {
+      favoritesMap = json.decode(value);
+      print(favoritesMap);
+      setState(() {
+        if (favoritesMap.containsKey(carpet['id'])) {
+          isFavorited = true;
+        }
+      });
+    });
   }
 
   @override
@@ -93,7 +99,7 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
                 setState(() {
                   isFavorited = true;
                 });
-                favoritesMap[carpet['id'].toString()] = carpet;
+                favoritesMap[carpet['id']] = carpet;
                 storage.writeFavorites(json.encode(favoritesMap));
                 print(favoritesMap);
               },

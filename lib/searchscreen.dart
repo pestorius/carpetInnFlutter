@@ -8,13 +8,11 @@ class SearchScreen extends StatelessWidget {
       {Key key,
       this.handKnottedList,
       this.kilimList,
-      this.machineMadeList,
-      this.favoritesMap})
+      this.machineMadeList})
       : super(key: key);
   final dynamic handKnottedList;
   final dynamic kilimList;
   final dynamic machineMadeList;
-  final dynamic favoritesMap;
 
   @override
   Widget build(BuildContext context) {
