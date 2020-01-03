@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:carpetinn_flutter/splashscreen.dart';
 import 'dart:convert';
+import 'package:share/share.dart';
 
 class CarpetDetailScreen extends StatefulWidget {
   CarpetDetailScreen({Key key, this.carpet})
@@ -178,7 +179,7 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
                 height: 50.0,
                 child: RaisedButton(
                   color: Colors.grey[350],
-                  onPressed: () {},
+                  onPressed: () {Share.share(carpetUrl);},
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
