@@ -134,6 +134,7 @@ class CarpetSearch extends SearchDelegate {
     });
 
     if (searchedList.length == 0) {
+      query = '';
       return Center(
           child: Text(
         'No results',
@@ -193,10 +194,9 @@ class CarpetSearch extends SearchDelegate {
     var suggestionsList = [];
 
     //design queried
-    if (isAlpha(query)) {
+    if (isAlpha(trim(query))) {
       combinedList.forEach((element) {
         if (contains(element['design'].toLowerCase(), query.toLowerCase())) {
-          //if (equals(element['design'].toLowerCase()[0], query)) {
           if (!suggestionsList.contains(element['design']))
             suggestionsList.add(element['design']);
         }
@@ -211,7 +211,7 @@ class CarpetSearch extends SearchDelegate {
     suggestionsList.sort();
     return ListView.separated(
         itemBuilder: (BuildContext context, int index) {
-          return GestureDetector(
+          return InkWell(
             onTap: () {
               showResults(context);
               query = suggestionsList[index];
