@@ -2,7 +2,7 @@ import 'package:carpetinn_flutter/carpetImageScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
-import 'package:carpetinn_flutter/splashscreen.dart';
+import 'package:carpetinn_flutter/main.dart';
 import 'dart:convert';
 import 'package:share/share.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';

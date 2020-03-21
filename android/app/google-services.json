@@ -54,7 +54,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:868566083566:android:99f73da2b2dadf2daf50ff",
         "android_client_info": {
-          "package_name": "com.pestorius.carpetinn_flutter"
+          "package_name": "com.carpetinn.faslam.carpetinnapp"
         }
       },
       "oauth_client": [

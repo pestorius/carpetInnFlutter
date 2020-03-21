@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:carpetinn_flutter/splashscreen.dart';
+import 'package:carpetinn_flutter/main.dart';
 import 'dart:convert';
 import 'package:carpetinn_flutter/carpetdetailsscreen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
