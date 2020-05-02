@@ -184,7 +184,7 @@ class SplashScreen extends StatelessWidget {
               'owned by Petal World Sdn. Bhd.',
               textAlign: TextAlign.center,
               style: TextStyle(
-                  fontSize: 18.0,
+                  fontSize: SizeConfig.blockSizeHorizontal * 4.5,
                   foreground: Paint()
                     ..style = PaintingStyle.stroke
                     ..strokeWidth = 4.3
@@ -202,7 +202,7 @@ class SplashScreen extends StatelessWidget {
               'owned by Petal World Sdn. Bhd.',
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 18.0,
+                fontSize: SizeConfig.blockSizeHorizontal * 4.5,
                 color: Colors.amber,
                 letterSpacing: 2.0,
                 fontFamily: logofont,
