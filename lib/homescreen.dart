@@ -116,7 +116,7 @@ class HomeScreen extends StatelessWidget {
                     child: Column(
                       children: <Widget>[
                         CachedNetworkImage(
-                          height: 120.0,
+                          height: SizeConfig.blockSizeHorizontal * 25,
                           fit: BoxFit.fill,
                           placeholder: (context, url) =>
                               new CircularProgressIndicator(),
