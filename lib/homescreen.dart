@@ -96,11 +96,17 @@ class HomeScreen extends StatelessWidget {
   }
 
   Widget tabBodies(var carpetsList) {
+    double ratio = 0.0;
+    if ((SizeConfig.screenWidth/SizeConfig.screenHeight) > 0.7) {
+      ratio = 0.9;
+    } else {
+      ratio = 0.7;
+    }
     return Padding(
       padding: EdgeInsets.only(top: 20.0),
       child: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3, childAspectRatio: 0.63),
+            crossAxisCount: 3, childAspectRatio: ratio),
         itemBuilder: (context, position) {
           return Center(
             child: GestureDetector(
