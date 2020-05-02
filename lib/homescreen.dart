@@ -44,12 +44,12 @@ class HomeScreen extends StatelessWidget {
                   color: Color.fromRGBO(43, 14, 230, 1),
                   fontFamily: 'Lora',
                   fontWeight: FontWeight.bold,
-                  fontSize: SizeConfig.blockSizeVertical * 3),
+                  fontSize: SizeConfig.blockSizeVertical * 3.3),
             ),
             backgroundColor: Colors.white,
             bottom: PreferredSize(
               preferredSize: Size(
-                0, SizeConfig.blockSizeVertical * 5.5
+                0, SizeConfig.blockSizeVertical * 6
               ),
               child: TabBar(
                 labelColor: Colors.black,
