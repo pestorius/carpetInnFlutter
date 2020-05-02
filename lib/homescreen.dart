@@ -33,17 +33,26 @@ class HomeScreen extends StatelessWidget {
             bottom: TabBar(
               labelColor: Colors.black,
               labelStyle:
-                  TextStyle(fontSize: 14.0, fontFamily: 'Lora',fontWeight: FontWeight.bold),
+                  TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),
               tabs: <Widget>[
                 Tab(
-                  text: 'Hand-Knotted',
+                  child: FittedBox(
+                    fit: BoxFit.fill,
+                    child: Text('Hand-knotted'),
+                  ),
                 ),
                 Tab(
-                  text: "Kilim",
+                  child: FittedBox(
+                    fit: BoxFit.fill,
+                    child: Text('Kilim'),
+                  ),
                 ),
                 Tab(
-                  text: "Machine Made",
-                )
+                  child: FittedBox(
+                    fit: BoxFit.fill,
+                    child: Text('Machine Made'),
+                  ),
+                ),
               ],
             ),
           ),
