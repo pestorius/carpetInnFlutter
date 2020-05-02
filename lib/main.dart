@@ -14,6 +14,24 @@ void main() {
   ));
 }
 
+class SizeConfig {
+  static MediaQueryData _mediaQueryData;
+  static double screenWidth;
+  static double screenHeight;
+  static double blockSizeHorizontal;
+  static double blockSizeVertical;
+
+  void init (BuildContext context) {
+    _mediaQueryData = MediaQuery.of(context);
+    screenWidth = _mediaQueryData.size.width;
+    screenHeight = _mediaQueryData.size.height;
+    blockSizeHorizontal = screenWidth / 100;
+    blockSizeVertical = screenHeight / 100;
+    print(screenWidth);
+    print(screenHeight);
+  }
+}
+
 class CarpetInnApp extends StatefulWidget {
   final FavoritesStorage storage;
 
@@ -122,15 +140,15 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    SizeConfig().init(context);
     return Scaffold(
       body: Stack(
         children: <Widget>[
           Center(
             child: Image.asset(
               backgroundPic,
-              width: size.width,
-              height: size.height,
+              width: SizeConfig.screenWidth,
+              height: SizeConfig.screenHeight,
               fit: BoxFit.fill,
             ),
           ),
@@ -138,7 +156,7 @@ class SplashScreen extends StatelessWidget {
             child: Text(
               'Carpet Inn',
               style: TextStyle(
-                  fontSize: 53,
+                  fontSize: SizeConfig.blockSizeHorizontal * 13,
                   foreground: Paint()
                     ..style = PaintingStyle.stroke
                     ..strokeWidth = 6
@@ -152,7 +170,7 @@ class SplashScreen extends StatelessWidget {
             child: Text(
               'Carpet Inn',
               style: TextStyle(
-                  fontSize: 53,
+                  fontSize: SizeConfig.blockSizeHorizontal * 13,
                   color: Colors.amber,
                   letterSpacing: letterspacing,
                   fontFamily: logofont),
