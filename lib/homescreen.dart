@@ -98,7 +98,7 @@ class HomeScreen extends StatelessWidget {
   Widget tabBodies(var carpetsList) {
     double ratio = 0.0;
     if ((SizeConfig.screenWidth/SizeConfig.screenHeight) > 0.7) {
-      ratio = 0.9;
+      ratio = 0.8;
     } else {
       ratio = 0.7;
     }
@@ -136,11 +136,11 @@ class HomeScreen extends StatelessWidget {
                           padding: EdgeInsets.only(top: 10, bottom: 5),
                           child: Text(carpetsList[position]['design'],
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 3.7)),
+                              style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 3.5)),
                         ),
                         Text.rich(TextSpan(
                             text: carpetsList[position]['size'],
-                            style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 3.7),
+                            style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 3.5),
                             children: <TextSpan>[TextSpan(text: ' cm')])),
                       ],
                     ))),
