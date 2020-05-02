@@ -3,12 +3,27 @@ import 'package:string_validator/string_validator.dart';
 import 'package:carpetinn_flutter/carpetdetailsscreen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
+class SizeConfig {
+  static MediaQueryData _mediaQueryData;
+  static double screenWidth;
+  static double screenHeight;
+  static double blockSizeHorizontal;
+  static double blockSizeVertical;
+
+  void init(BuildContext context) {
+    _mediaQueryData = MediaQuery.of(context);
+    screenWidth = _mediaQueryData.size.width;
+    screenHeight = _mediaQueryData.size.height;
+    blockSizeHorizontal = screenWidth / 100;
+    blockSizeVertical = screenHeight / 100;
+    print(screenWidth);
+    print(screenHeight);
+  }
+}
+
 class SearchScreen extends StatelessWidget {
   SearchScreen(
-      {Key key,
-      this.handKnottedList,
-      this.kilimList,
-      this.machineMadeList})
+      {Key key, this.handKnottedList, this.kilimList, this.machineMadeList})
       : super(key: key);
   final dynamic handKnottedList;
   final dynamic kilimList;
@@ -16,6 +31,7 @@ class SearchScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     var combinedList =
         [handKnottedList, kilimList, machineMadeList].expand((x) => x).toList();
     return Scaffold(
@@ -119,6 +135,7 @@ class CarpetSearch extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
+    SizeConfig().init(context);
     var searchedList = [];
     combinedList.forEach((element) {
       if (!isNumeric(query)) {
@@ -141,10 +158,16 @@ class CarpetSearch extends SearchDelegate {
         style: TextStyle(fontSize: 20.0),
       ));
     } else {
+      double ratio = 0.0;
+      if ((SizeConfig.screenWidth/SizeConfig.screenHeight) > 0.7) {
+        ratio = 0.8;
+      } else {
+        ratio = 0.7;
+      }
       return GridView.builder(
         padding: EdgeInsets.only(top: 25.0),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3, childAspectRatio: 0.63),
+            crossAxisCount: 3, childAspectRatio: ratio),
         itemBuilder: (context, position) {
           return Center(
             child: GestureDetector(
@@ -162,7 +185,7 @@ class CarpetSearch extends SearchDelegate {
                     child: Column(
                       children: <Widget>[
                         CachedNetworkImage(
-                          height: 120.0,
+                          height: SizeConfig.blockSizeHorizontal * 25,
                           fit: BoxFit.fill,
                           placeholder: (context, url) =>
                               new CircularProgressIndicator(),
@@ -174,11 +197,11 @@ class CarpetSearch extends SearchDelegate {
                           padding: EdgeInsets.only(top: 10, bottom: 5),
                           child: Text(searchedList[position]['design'],
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize: 15.0)),
+                              style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 3.5)),
                         ),
                         Text.rich(TextSpan(
                             text: searchedList[position]['size'],
-                            style: TextStyle(fontSize: 15.0),
+                            style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 3.5),
                             children: <TextSpan>[TextSpan(text: ' cm')])),
                       ],
                     ))),
