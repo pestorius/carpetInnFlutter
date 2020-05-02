@@ -10,6 +10,24 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_sms/flutter_sms.dart';
 import 'package:flutter_open_whatsapp/flutter_open_whatsapp.dart';
 
+class SizeConfig {
+  static MediaQueryData _mediaQueryData;
+  static double screenWidth;
+  static double screenHeight;
+  static double blockSizeHorizontal;
+  static double blockSizeVertical;
+
+  void init (BuildContext context) {
+    _mediaQueryData = MediaQuery.of(context);
+    screenWidth = _mediaQueryData.size.width;
+    screenHeight = _mediaQueryData.size.height;
+    blockSizeHorizontal = screenWidth / 100;
+    blockSizeVertical = screenHeight / 100;
+    print(screenWidth);
+    print(screenHeight);
+  }
+}
+
 class CarpetDetailScreen extends StatefulWidget {
   CarpetDetailScreen({Key key, this.carpet}) : super(key: key);
   final dynamic carpet;
@@ -42,6 +60,7 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     //storage
     FavoritesStorage storage = FavoritesStorage();
 
@@ -69,7 +88,7 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
       return Padding(
         padding: const EdgeInsets.only(bottom: 4.0),
         child: Text(detail,
-            style: TextStyle(fontSize: 20.0, fontFamily: 'OpenSans')),
+            style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 4.6, fontFamily: 'OpenSans')),
       );
     }
 
@@ -156,7 +175,7 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
                           child: Text(
                             'Details',
                             style:
-                                TextStyle(fontSize: 30.0, fontFamily: pageFont),
+                                TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 7.5, fontFamily: pageFont),
                           ),
                         ),
                         designTextWidget('Design: $design'),
