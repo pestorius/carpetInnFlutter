@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carpetinn_flutter/carpetdetailsscreen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
 class SizeConfig {
   static MediaQueryData _mediaQueryData;
@@ -33,11 +34,13 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+    FlutterStatusbarcolor.setStatusBarColor(Colors.white);
     return MaterialApp(
       home: DefaultTabController(
         length: 3,
         child: Scaffold(
           appBar: AppBar(
+            brightness: Brightness.light,
             title: Text(
               this.title,
               style: TextStyle(
