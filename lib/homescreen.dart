@@ -2,6 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:carpetinn_flutter/carpetdetailsscreen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
+class SizeConfig {
+  static MediaQueryData _mediaQueryData;
+  static double screenWidth;
+  static double screenHeight;
+  static double blockSizeHorizontal;
+  static double blockSizeVertical;
+
+  void init (BuildContext context) {
+    _mediaQueryData = MediaQuery.of(context);
+    screenWidth = _mediaQueryData.size.width;
+    screenHeight = _mediaQueryData.size.height;
+    blockSizeHorizontal = screenWidth / 100;
+    blockSizeVertical = screenHeight / 100;
+  }
+}
+
 class HomeScreen extends StatelessWidget {
   HomeScreen(
       {Key key,
@@ -16,6 +32,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return MaterialApp(
       home: DefaultTabController(
         length: 3,
@@ -27,33 +44,38 @@ class HomeScreen extends StatelessWidget {
                   color: Color.fromRGBO(43, 14, 230, 1),
                   fontFamily: 'Lora',
                   fontWeight: FontWeight.bold,
-                  fontSize: 22.0),
+                  fontSize: SizeConfig.blockSizeVertical * 3),
             ),
             backgroundColor: Colors.white,
-            bottom: TabBar(
-              labelColor: Colors.black,
-              labelStyle:
-                  TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),
-              tabs: <Widget>[
-                Tab(
-                  child: FittedBox(
-                    fit: BoxFit.fill,
-                    child: Text('Hand-knotted'),
+            bottom: PreferredSize(
+              preferredSize: Size(
+                0, SizeConfig.blockSizeVertical * 5.5
+              ),
+              child: TabBar(
+                labelColor: Colors.black,
+                labelStyle:
+                    TextStyle(fontSize: SizeConfig.blockSizeVertical * 2, fontFamily: 'Lora', fontWeight: FontWeight.bold),
+                tabs: <Widget>[
+                  Tab(
+                    child: FittedBox(
+                      fit: BoxFit.fill,
+                      child: Text('Hand-knotted'),
+                    ),
                   ),
-                ),
-                Tab(
-                  child: FittedBox(
-                    fit: BoxFit.fill,
-                    child: Text('Kilim'),
+                  Tab(
+                    child: FittedBox(
+                      fit: BoxFit.fill,
+                      child: Text('Kilim'),
+                    ),
                   ),
-                ),
-                Tab(
-                  child: FittedBox(
-                    fit: BoxFit.fill,
-                    child: Text('Machine Made'),
+                  Tab(
+                    child: FittedBox(
+                      fit: BoxFit.fill,
+                      child: Text('Machine Made'),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           body: TabBarView(
