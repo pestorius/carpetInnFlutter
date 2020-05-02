@@ -33,7 +33,7 @@ class HomeScreen extends StatelessWidget {
             bottom: TabBar(
               labelColor: Colors.black,
               labelStyle:
-                  TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),
+                  TextStyle(fontSize: 14.0, fontFamily: 'Lora',fontWeight: FontWeight.bold),
               tabs: <Widget>[
                 Tab(
                   text: 'Hand-Knotted',
