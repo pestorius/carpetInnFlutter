@@ -136,11 +136,11 @@ class HomeScreen extends StatelessWidget {
                           padding: EdgeInsets.only(top: 10, bottom: 5),
                           child: Text(carpetsList[position]['design'],
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize: 15.0)),
+                              style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 3.7)),
                         ),
                         Text.rich(TextSpan(
                             text: carpetsList[position]['size'],
-                            style: TextStyle(fontSize: 15.0),
+                            style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 3.7),
                             children: <TextSpan>[TextSpan(text: ' cm')])),
                       ],
                     ))),
