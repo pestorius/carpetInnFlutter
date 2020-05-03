@@ -7,12 +7,13 @@ import 'package:firebase_database/firebase_database.dart';
 import 'homescreen.dart';
 
 class Main extends StatefulWidget {
-  Main(
-      {Key key,
-      this.title,
-      this.handKnottedList,
-      this.kilimList,
-      this.machineMadeList,});
+  Main({
+    Key key,
+    this.title,
+    this.handKnottedList,
+    this.kilimList,
+    this.machineMadeList,
+  });
   final String title;
   final dynamic handKnottedList;
   final dynamic kilimList;
@@ -47,11 +48,10 @@ class MainState extends State<Main> {
     super.initState();
     children = [
       HomeScreen(
-        title: title,
-        handKnottedList: handKnottedList,
-        kilimList: kilimList,
-        machineMadeList: machineMadeList
-      ),
+          title: title,
+          handKnottedList: handKnottedList,
+          kilimList: kilimList,
+          machineMadeList: machineMadeList),
       SearchScreen(
         handKnottedList: handKnottedList,
         kilimList: kilimList,

@@ -17,7 +17,7 @@ class SizeConfig {
   static double blockSizeHorizontal;
   static double blockSizeVertical;
 
-  void init (BuildContext context) {
+  void init(BuildContext context) {
     _mediaQueryData = MediaQuery.of(context);
     screenWidth = _mediaQueryData.size.width;
     screenHeight = _mediaQueryData.size.height;
@@ -88,7 +88,9 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
       return Padding(
         padding: const EdgeInsets.only(bottom: 4.0),
         child: Text(detail,
-            style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 4.6, fontFamily: 'OpenSans')),
+            style: TextStyle(
+                fontSize: SizeConfig.blockSizeHorizontal * 4.6,
+                fontFamily: 'OpenSans')),
       );
     }
 
@@ -174,8 +176,9 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
                           padding: const EdgeInsets.only(bottom: 7.0),
                           child: Text(
                             'Details',
-                            style:
-                                TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 7.5, fontFamily: pageFont),
+                            style: TextStyle(
+                                fontSize: SizeConfig.blockSizeHorizontal * 7.5,
+                                fontFamily: pageFont),
                           ),
                         ),
                         designTextWidget('Design: $design'),

@@ -159,7 +159,7 @@ class CarpetSearch extends SearchDelegate {
       ));
     } else {
       double ratio = 0.0;
-      if ((SizeConfig.screenWidth/SizeConfig.screenHeight) > 0.7) {
+      if ((SizeConfig.screenWidth / SizeConfig.screenHeight) > 0.7) {
         ratio = 0.8;
       } else {
         ratio = 0.7;
@@ -197,11 +197,14 @@ class CarpetSearch extends SearchDelegate {
                           padding: EdgeInsets.only(top: 10, bottom: 5),
                           child: Text(searchedList[position]['design'],
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 3.5)),
+                              style: TextStyle(
+                                  fontSize:
+                                      SizeConfig.blockSizeHorizontal * 3.5)),
                         ),
                         Text.rich(TextSpan(
                             text: searchedList[position]['size'],
-                            style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 3.5),
+                            style: TextStyle(
+                                fontSize: SizeConfig.blockSizeHorizontal * 3.5),
                             children: <TextSpan>[TextSpan(text: ' cm')])),
                       ],
                     ))),
