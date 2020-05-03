@@ -25,7 +25,7 @@ class AboutUsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    var imageWidth = 45.0;
+    var imageWidth = SizeConfig.blockSizeHorizontal * 11;
     double gapBetweenIcons = 13.0;
     return Scaffold(
       appBar: AppBar(
