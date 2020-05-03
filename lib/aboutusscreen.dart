@@ -184,7 +184,7 @@ class AboutUsScreen extends StatelessWidget {
               Align(
                 alignment: Alignment.bottomRight,
                 child: Container(
-                    width: 170.0,
+                    width: SizeConfig.blockSizeHorizontal * 40,
                     alignment: Alignment.bottomRight,
                     child: Text(
                       '* Icons made by Pixel Perfect & Freepik from www.flaticon.com',
