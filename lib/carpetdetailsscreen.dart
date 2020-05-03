@@ -96,6 +96,7 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
 
     return Scaffold(
         appBar: AppBar(
+          brightness: Brightness.light,
           actions: <Widget>[
             isFavorited
                 ? IconButton(

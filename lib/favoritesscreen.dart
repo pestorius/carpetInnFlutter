@@ -63,6 +63,7 @@ class FavoritesScreenState extends State<FavoritesScreen> {
     }
     return Scaffold(
       appBar: AppBar(
+        brightness: Brightness.light,
         title: Text(
           'Favorites',
           style: TextStyle(

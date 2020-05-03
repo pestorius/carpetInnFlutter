@@ -29,6 +29,7 @@ class AboutUsScreen extends StatelessWidget {
     double gapBetweenIcons = 13.0;
     return Scaffold(
       appBar: AppBar(
+        brightness: Brightness.light,
         title: Text(
           'About Us',
           style: TextStyle(
