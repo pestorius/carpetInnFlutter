@@ -218,6 +218,7 @@ class CarpetSearch extends SearchDelegate {
   @override
   Widget buildSuggestions(BuildContext context) {
     var suggestionsList = [];
+    var imageList = [];
 
     // design queried
     if (isAlpha(query.replaceAll(" ", ""))) {
@@ -227,35 +228,85 @@ class CarpetSearch extends SearchDelegate {
             suggestionsList.add(element['design']);
         }
       });
-    // code queried
+      suggestionsList.sort();
+      // code queried
     } else if (isNumeric(query)) {
       combinedList.forEach((element) {
         if (contains(element['code'], query)) {
           suggestionsList.add(element['code']);
+          imageList.add(element['imageUrl']);
         }
       });
+      // map suggestionsList with imageList
+      final Map<dynamic, dynamic> mappings = {
+        for (int i = 0; i < suggestionsList.length; i++)
+          suggestionsList[i]: imageList[i]
+      };
+      suggestionsList.sort();
+      imageList = [
+        for (var suggestion in suggestionsList) mappings[suggestion]
+      ];
     }
-    suggestionsList.sort();
-    return ListView.separated(
-        itemBuilder: (BuildContext context, int index) {
-          return InkWell(
-            onTap: () {
-              showResults(context);
-              query = suggestionsList[index];
-            },
-            child: Container(
-              width: double.infinity,
-              alignment: Alignment.centerLeft,
-              padding: EdgeInsets.only(left: 10.0),
-              height: 50,
-              child: Text(
-                suggestionsList[index],
-                style: TextStyle(fontSize: 18.0, fontFamily: 'OpenSans'),
+
+    // return two different types of lists depending on search type
+    if (isNumeric(query)) {
+      print(combinedList[0]);
+      return ListView.separated(
+          itemBuilder: (BuildContext context, int index) {
+            return InkWell(
+              onTap: () {
+                showResults(context);
+                query = suggestionsList[index];
+              },
+              child: Container(
+                width: double.infinity,
+                alignment: Alignment.centerLeft,
+                padding: EdgeInsets.only(left: 10.0, right: 10.0),
+                height: 50,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text(
+                      suggestionsList[index],
+                      style: TextStyle(fontSize: 18.0, fontFamily: 'OpenSans'),
+                    ),
+                    CachedNetworkImage(
+                      width: SizeConfig.blockSizeHorizontal * 10,
+                      fit: BoxFit.fill,
+                      placeholder: (context, url) =>
+                      new CircularProgressIndicator(),
+                      imageUrl: imageList[index],
+                      errorWidget: (context, url, error) => new Icon(Icons.error),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          );
-        },
-        separatorBuilder: (BuildContext context, int index) => const Divider(),
-        itemCount: suggestionsList.length);
+            );
+          },
+          separatorBuilder: (BuildContext context, int index) => const Divider(),
+          itemCount: suggestionsList.length);
+    } else {
+      return ListView.separated(
+          itemBuilder: (BuildContext context, int index) {
+            return InkWell(
+              onTap: () {
+                showResults(context);
+                query = suggestionsList[index];
+              },
+              child: Container(
+                width: double.infinity,
+                alignment: Alignment.centerLeft,
+                padding: EdgeInsets.only(left: 10.0, right: 10.0),
+                height: 50,
+                child: Text(
+                  suggestionsList[index],
+                  style: TextStyle(fontSize: 18.0, fontFamily: 'OpenSans'),
+                ),
+              ),
+            );
+          },
+          separatorBuilder: (BuildContext context, int index) => const Divider(),
+          itemCount: suggestionsList.length);
+    }
   }
 }
