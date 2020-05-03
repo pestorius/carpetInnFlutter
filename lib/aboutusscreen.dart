@@ -1,11 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+class SizeConfig {
+  static MediaQueryData _mediaQueryData;
+  static double screenWidth;
+  static double screenHeight;
+  static double blockSizeHorizontal;
+  static double blockSizeVertical;
+
+  void init(BuildContext context) {
+    _mediaQueryData = MediaQuery.of(context);
+    screenWidth = _mediaQueryData.size.width;
+    screenHeight = _mediaQueryData.size.height;
+    blockSizeHorizontal = screenWidth / 100;
+    blockSizeVertical = screenHeight / 100;
+    print(screenWidth);
+    print(screenHeight);
+  }
+}
+
 class AboutUsScreen extends StatelessWidget {
   AboutUsScreen({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     var imageWidth = 45.0;
     double gapBetweenIcons = 13.0;
     return Scaffold(
@@ -26,28 +45,28 @@ class AboutUsScreen extends StatelessWidget {
             children: <Widget>[
               Text(
                 'Contact Us',
-                style: TextStyle(fontSize: 24.0, fontFamily: 'OpenSans'),
+                style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 6, fontFamily: 'OpenSans'),
               ),
               Text(
                 'Tel: +603 4265 2788\nHP: +6012 337 2788',
-                style: TextStyle(fontFamily: 'OpenSans', fontSize: 16.0),
+                style: TextStyle(fontFamily: 'OpenSans', fontSize: SizeConfig.blockSizeHorizontal * 4),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 10.0),
                 child: Text(
                   'Website',
-                  style: TextStyle(fontSize: 24.0, fontFamily: 'OpenSans'),
+                  style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 6, fontFamily: 'OpenSans'),
                 ),
               ),
               Text(
                 'carpetinn.my',
-                style: TextStyle(fontFamily: 'OpenSans', fontSize: 18.0),
+                style: TextStyle(fontFamily: 'OpenSans', fontSize: SizeConfig.blockSizeHorizontal * 4.5),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 10.0),
                 child: Text(
                   'Social Media',
-                  style: TextStyle(fontSize: 24.0, fontFamily: 'OpenSans'),
+                  style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 6, fontFamily: 'OpenSans'),
                 ),
               ),
               Row(
@@ -120,18 +139,18 @@ class AboutUsScreen extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 10.0),
                 child: Text(
                   'Address',
-                  style: TextStyle(fontSize: 24.0, fontFamily: 'OpenSans'),
+                  style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 6, fontFamily: 'OpenSans'),
                 ),
               ),
               Text(
                 'G-07, Ground Floor, Plaza Flamingo, (next to Flamingo Hotel) Jalan Hulu Kelang, 68000 Ampang, Selangor, Malaysia',
-                style: TextStyle(fontFamily: 'OpenSans', fontSize: 16.0),
+                style: TextStyle(fontFamily: 'OpenSans', fontSize: SizeConfig.blockSizeHorizontal * 4),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 10.0),
                 child: Text(
                   'Navigate to Gallery',
-                  style: TextStyle(fontSize: 24.0, fontFamily: 'OpenSans'),
+                  style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 6, fontFamily: 'OpenSans'),
                 ),
               ),
               Row(
@@ -168,9 +187,9 @@ class AboutUsScreen extends StatelessWidget {
                     width: 170.0,
                     alignment: Alignment.bottomRight,
                     child: Text(
-                      '* Icons made by Pixel perfect & Freepik from www.flaticon.com',
+                      '* Icons made by Pixel Perfect & Freepik from www.flaticon.com',
                       textAlign: TextAlign.right,
-                      style: TextStyle(fontSize: 11.0),
+                      style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 2.7),
                     )),
               ),
             ],
