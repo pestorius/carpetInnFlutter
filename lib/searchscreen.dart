@@ -219,14 +219,15 @@ class CarpetSearch extends SearchDelegate {
   Widget buildSuggestions(BuildContext context) {
     var suggestionsList = [];
 
-    //design queried
-    if (isAlpha(trim(query))) {
+    // design queried
+    if (isAlpha(query.replaceAll(" ", ""))) {
       combinedList.forEach((element) {
         if (contains(element['design'].toLowerCase(), query.toLowerCase())) {
           if (!suggestionsList.contains(element['design']))
             suggestionsList.add(element['design']);
         }
       });
+    // code queried
     } else if (isNumeric(query)) {
       combinedList.forEach((element) {
         if (contains(element['code'], query)) {
