@@ -36,25 +36,35 @@ class FavoritesScreenState extends State<FavoritesScreen> {
   var favoritesMap;
   var favoritesList = [];
   var anyFavorites = false;
+  var favoritesListLength = 0;
 
   @override
   void initState() {
     super.initState();
+    favoritesListLength = favoritesList.length;
+    checkStorage();
+  }
+
+  void checkStorage() {
     storage.readFavorites().then((String value) {
       favoritesMap = json.decode(value);
       favoritesList = favoritesMap.values.toList();
-      print(favoritesList.length);
-      setState(() {
-        if (favoritesList.length > 0) {
-          anyFavorites = true;
-        }
-      });
+      if (favoritesList.length != favoritesListLength) {
+        favoritesListLength = favoritesList.length;
+        setState(() {
+          if (favoritesList.length > 0) {
+            anyFavorites = true;
+          } else
+            anyFavorites = false;
+        });
+      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+    checkStorage();
     double ratio = 0.0;
     if ((SizeConfig.screenWidth / SizeConfig.screenHeight) > 0.7) {
       ratio = 0.8;
