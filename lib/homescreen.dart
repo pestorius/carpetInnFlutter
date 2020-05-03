@@ -10,7 +10,7 @@ class SizeConfig {
   static double blockSizeHorizontal;
   static double blockSizeVertical;
 
-  void init (BuildContext context) {
+  void init(BuildContext context) {
     _mediaQueryData = MediaQuery.of(context);
     screenWidth = _mediaQueryData.size.width;
     screenHeight = _mediaQueryData.size.height;
@@ -53,13 +53,13 @@ class HomeScreen extends StatelessWidget {
             ),
             backgroundColor: Colors.white,
             bottom: PreferredSize(
-              preferredSize: Size(
-                0, SizeConfig.blockSizeVertical * 6
-              ),
+              preferredSize: Size(0, SizeConfig.blockSizeVertical * 6),
               child: TabBar(
                 labelColor: Colors.black,
-                labelStyle:
-                    TextStyle(fontSize: SizeConfig.blockSizeVertical * 2, fontFamily: 'Lora', fontWeight: FontWeight.bold),
+                labelStyle: TextStyle(
+                    fontSize: SizeConfig.blockSizeVertical * 2,
+                    fontFamily: 'Lora',
+                    fontWeight: FontWeight.bold),
                 tabs: <Widget>[
                   Tab(
                     child: FittedBox(
@@ -97,7 +97,7 @@ class HomeScreen extends StatelessWidget {
 
   Widget tabBodies(var carpetsList) {
     double ratio = 0.0;
-    if ((SizeConfig.screenWidth/SizeConfig.screenHeight) > 0.7) {
+    if ((SizeConfig.screenWidth / SizeConfig.screenHeight) > 0.7) {
       ratio = 0.8;
     } else {
       ratio = 0.7;
@@ -114,9 +114,8 @@ class HomeScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => CarpetDetailScreen(
-                              carpet: carpetsList[position]
-                            )),
+                        builder: (context) =>
+                            CarpetDetailScreen(carpet: carpetsList[position])),
                   );
                 },
                 child: Padding(
@@ -136,11 +135,14 @@ class HomeScreen extends StatelessWidget {
                           padding: EdgeInsets.only(top: 10, bottom: 5),
                           child: Text(carpetsList[position]['design'],
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 3.5)),
+                              style: TextStyle(
+                                  fontSize:
+                                      SizeConfig.blockSizeHorizontal * 3.5)),
                         ),
                         Text.rich(TextSpan(
                             text: carpetsList[position]['size'],
-                            style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 3.5),
+                            style: TextStyle(
+                                fontSize: SizeConfig.blockSizeHorizontal * 3.5),
                             children: <TextSpan>[TextSpan(text: ' cm')])),
                       ],
                     ))),

@@ -45,28 +45,38 @@ class AboutUsScreen extends StatelessWidget {
             children: <Widget>[
               Text(
                 'Contact Us',
-                style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 6, fontFamily: 'OpenSans'),
+                style: TextStyle(
+                    fontSize: SizeConfig.blockSizeHorizontal * 6,
+                    fontFamily: 'OpenSans'),
               ),
               Text(
                 'Tel: +603 4265 2788\nHP: +6012 337 2788',
-                style: TextStyle(fontFamily: 'OpenSans', fontSize: SizeConfig.blockSizeHorizontal * 4),
+                style: TextStyle(
+                    fontFamily: 'OpenSans',
+                    fontSize: SizeConfig.blockSizeHorizontal * 4),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 10.0),
                 child: Text(
                   'Website',
-                  style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 6, fontFamily: 'OpenSans'),
+                  style: TextStyle(
+                      fontSize: SizeConfig.blockSizeHorizontal * 6,
+                      fontFamily: 'OpenSans'),
                 ),
               ),
               Text(
                 'carpetinn.my',
-                style: TextStyle(fontFamily: 'OpenSans', fontSize: SizeConfig.blockSizeHorizontal * 4.5),
+                style: TextStyle(
+                    fontFamily: 'OpenSans',
+                    fontSize: SizeConfig.blockSizeHorizontal * 4.5),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 10.0),
                 child: Text(
                   'Social Media',
-                  style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 6, fontFamily: 'OpenSans'),
+                  style: TextStyle(
+                      fontSize: SizeConfig.blockSizeHorizontal * 6,
+                      fontFamily: 'OpenSans'),
                 ),
               ),
               Row(
@@ -139,18 +149,24 @@ class AboutUsScreen extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 10.0),
                 child: Text(
                   'Address',
-                  style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 6, fontFamily: 'OpenSans'),
+                  style: TextStyle(
+                      fontSize: SizeConfig.blockSizeHorizontal * 6,
+                      fontFamily: 'OpenSans'),
                 ),
               ),
               Text(
                 'G-07, Ground Floor, Plaza Flamingo, (next to Flamingo Hotel) Jalan Hulu Kelang, 68000 Ampang, Selangor, Malaysia',
-                style: TextStyle(fontFamily: 'OpenSans', fontSize: SizeConfig.blockSizeHorizontal * 4),
+                style: TextStyle(
+                    fontFamily: 'OpenSans',
+                    fontSize: SizeConfig.blockSizeHorizontal * 4),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 10.0),
                 child: Text(
                   'Navigate to Gallery',
-                  style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 6, fontFamily: 'OpenSans'),
+                  style: TextStyle(
+                      fontSize: SizeConfig.blockSizeHorizontal * 6,
+                      fontFamily: 'OpenSans'),
                 ),
               ),
               Row(
@@ -189,7 +205,8 @@ class AboutUsScreen extends StatelessWidget {
                     child: Text(
                       '* Icons made by Pixel Perfect & Freepik from www.flaticon.com',
                       textAlign: TextAlign.right,
-                      style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 2.7),
+                      style: TextStyle(
+                          fontSize: SizeConfig.blockSizeHorizontal * 2.7),
                     )),
               ),
             ],
