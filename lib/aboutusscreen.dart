@@ -65,11 +65,18 @@ class AboutUsScreen extends StatelessWidget {
                       fontFamily: 'OpenSans'),
                 ),
               ),
-              Text(
-                'carpetinn.my',
-                style: TextStyle(
-                    fontFamily: 'OpenSans',
-                    fontSize: SizeConfig.blockSizeHorizontal * 4.5),
+              InkWell(
+                onTap: () {
+                  _launchURL('https://carpetinn.my');
+                },
+                child: Text(
+                  'carpetinn.my',
+                  style: TextStyle(
+                      fontFamily: 'OpenSans',
+                      fontSize: SizeConfig.blockSizeHorizontal * 4.5,
+                      decoration: TextDecoration.underline,
+                      color: Colors.blue),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 10.0),
