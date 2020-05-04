@@ -200,21 +200,22 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Padding(
-              padding:
-                  const EdgeInsets.only(bottom: 10.0, top: 10.0, left: 10.0),
+              padding: const EdgeInsets.only(
+                  bottom: 5.0, top: 5.0, left: 10.0, right: 10.0),
               child: ButtonTheme(
-                height: 50.0,
+                height: 40.0,
                 child: RaisedButton(
                   color: Colors.amberAccent,
                   onPressed: () {
                     Share.share(carpetUrl);
                   },
                   child: Padding(
-                    padding: const EdgeInsets.all(6.0),
+                    padding: const EdgeInsets.only(
+                        top: 6.0, bottom: 6.0, left: 8.0, right: 8.0),
                     child: Text(
                       'Share',
                       style: TextStyle(
-                          fontSize: 19.0,
+                          fontSize: 17.0,
                           color: Colors.black,
                           fontFamily: pageFont),
                     ),
@@ -227,20 +228,21 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
             ),
             Padding(
               padding:
-                  const EdgeInsets.only(bottom: 10.0, right: 10.0, top: 10.0),
+                  const EdgeInsets.only(bottom: 5.0, top: 5.0, left: 10.0, right: 10.0),
               child: ButtonTheme(
-                height: 50.0,
+                height: 40.0,
                 child: RaisedButton(
                   color: Colors.amberAccent,
                   onPressed: () {
                     enquireDialog(code);
                   },
                   child: Padding(
-                    padding: const EdgeInsets.all(6.0),
+                    padding: const EdgeInsets.only(
+                        top: 6.0, bottom: 6.0, left: 8.0, right: 8.0),
                     child: Text(
                       'Enquire',
                       style: TextStyle(
-                          fontSize: 19.0,
+                          fontSize: 17.0,
                           color: Colors.black,
                           fontFamily: pageFont),
                     ),
