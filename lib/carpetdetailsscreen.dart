@@ -203,7 +203,7 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
               padding: const EdgeInsets.only(
                   bottom: 5.0, top: 5.0, left: 10.0, right: 10.0),
               child: ButtonTheme(
-                height: 40.0,
+                height: SizeConfig.blockSizeHorizontal * 10,
                 child: RaisedButton(
                   color: Colors.amberAccent,
                   onPressed: () {
@@ -215,7 +215,7 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
                     child: Text(
                       'Share',
                       style: TextStyle(
-                          fontSize: 17.0,
+                          fontSize: SizeConfig.blockSizeHorizontal * 4.2,
                           color: Colors.black,
                           fontFamily: pageFont),
                     ),
@@ -230,7 +230,7 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
               padding:
                   const EdgeInsets.only(bottom: 5.0, top: 5.0, left: 10.0, right: 10.0),
               child: ButtonTheme(
-                height: 40.0,
+                height: SizeConfig.blockSizeHorizontal * 10,
                 child: RaisedButton(
                   color: Colors.amberAccent,
                   onPressed: () {
@@ -242,7 +242,7 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
                     child: Text(
                       'Enquire',
                       style: TextStyle(
-                          fontSize: 17.0,
+                          fontSize: SizeConfig.blockSizeHorizontal * 4.2,
                           color: Colors.black,
                           fontFamily: pageFont),
                     ),
