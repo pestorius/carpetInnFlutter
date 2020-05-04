@@ -210,8 +210,11 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
                     Share.share(carpetUrl);
                   },
                   child: Padding(
-                    padding: const EdgeInsets.only(
-                        top: 6.0, bottom: 6.0, left: 8.0, right: 8.0),
+                    padding: EdgeInsets.only(
+                        top: 6.0,
+                        bottom: 6.0,
+                        left: SizeConfig.blockSizeHorizontal * 2,
+                        right: SizeConfig.blockSizeHorizontal * 2),
                     child: Text(
                       'Share',
                       style: TextStyle(
@@ -227,8 +230,8 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
               ),
             ),
             Padding(
-              padding:
-                  const EdgeInsets.only(bottom: 5.0, top: 5.0, left: 10.0, right: 10.0),
+              padding: const EdgeInsets.only(
+                  bottom: 5.0, top: 5.0, left: 10.0, right: 10.0),
               child: ButtonTheme(
                 height: SizeConfig.blockSizeHorizontal * 10,
                 child: RaisedButton(
@@ -237,8 +240,11 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
                     enquireDialog(code);
                   },
                   child: Padding(
-                    padding: const EdgeInsets.only(
-                        top: 6.0, bottom: 6.0, left: 8.0, right: 8.0),
+                    padding: EdgeInsets.only(
+                        top: 6.0,
+                        bottom: 6.0,
+                        left: SizeConfig.blockSizeHorizontal * 2,
+                        right: SizeConfig.blockSizeHorizontal * 2),
                     child: Text(
                       'Enquire',
                       style: TextStyle(
