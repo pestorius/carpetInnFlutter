@@ -171,7 +171,7 @@ class SplashScreen extends StatelessWidget {
               'Carpet Inn',
               style: TextStyle(
                   fontSize: SizeConfig.blockSizeHorizontal * 13,
-                  color: Colors.amber,
+                  color: Colors.amberAccent,
                   letterSpacing: letterspacing,
                   fontFamily: logofont),
             ),
