@@ -466,7 +466,7 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
 
   void _launchWhatsapp(var code) async {
     String phoneNumber = '+60123372788';
-    String message = 'Code: $code';
+    String message = 'Code:%20$code';
     var whatsappUrl = "whatsapp://send?phone=$phoneNumber&text=$message";
     if (await canLaunch(whatsappUrl)) {
       await launch(whatsappUrl);
