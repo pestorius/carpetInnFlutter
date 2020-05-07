@@ -390,8 +390,7 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
                         type: MaterialType.transparency,
                         child: InkWell(
                           onTap: () {
-                            FlutterOpenWhatsapp.sendSingleMessage(
-                                '+60123372788', 'Code: $code');
+                            _launchWhatsapp(code);
                           },
                           child: Container(
                             child: Column(
@@ -463,5 +462,16 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
       print(onError);
     });
     print(_result);
+  }
+
+  void _launchWhatsapp(var code) async {
+    String phoneNumber = '+60123372788';
+    String message = 'Code: $code';
+    var whatsappUrl = "whatsapp://send?phone=$phoneNumber&text=$message";
+    if (await canLaunch(whatsappUrl)) {
+      await launch(whatsappUrl);
+    } else {
+      throw 'Could not launch $whatsappUrl';
+    }
   }
 }
