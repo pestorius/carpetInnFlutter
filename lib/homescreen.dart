@@ -57,7 +57,7 @@ class HomeScreen extends StatelessWidget {
               child: TabBar(
                 labelColor: Colors.black,
                 labelStyle: TextStyle(
-                    fontSize: SizeConfig.blockSizeVertical * 2.5,
+                    fontSize: SizeConfig.blockSizeHorizontal * 4.5,
                     fontFamily: 'OpenSans',
                     fontWeight: FontWeight.bold),
                 tabs: <Widget>[
