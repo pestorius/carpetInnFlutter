@@ -146,13 +146,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.2.2"
-  flutter_open_whatsapp:
-    dependency: "direct dev"
-    description:
-      name: flutter_open_whatsapp
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.1.2"
   flutter_sms:
     dependency: "direct dev"
     description:
@@ -177,6 +170,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  fluttertoast:
+    dependency: "direct dev"
+    description:
+      name: fluttertoast
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.0.1"
   http:
     dependency: transitive
     description:

@@ -8,7 +8,7 @@ import 'package:share/share.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_sms/flutter_sms.dart';
-import 'package:flutter_open_whatsapp/flutter_open_whatsapp.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class SizeConfig {
   static MediaQueryData _mediaQueryData;
@@ -471,6 +471,14 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
     if (await canLaunch(whatsappUrl)) {
       await launch(whatsappUrl);
     } else {
+      Fluttertoast.showToast(
+          msg: "Could not launch Whatsapp",
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 2,
+          backgroundColor: Colors.grey,
+          textColor: Colors.white,
+          fontSize: 16.0);
       throw 'Could not launch $whatsappUrl';
     }
   }
