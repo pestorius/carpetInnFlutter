@@ -37,6 +37,12 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     FlutterStatusbarcolor.setStatusBarColor(Colors.white);
+    double tabFontSize = 0;
+    if (SizeConfig.screenWidth > 700) {
+      tabFontSize = SizeConfig.blockSizeHorizontal * 3.5;
+    } else {
+      tabFontSize = SizeConfig.blockSizeHorizontal * 4.5;
+    }
     return MaterialApp(
       home: DefaultTabController(
         length: 3,
@@ -57,7 +63,7 @@ class HomeScreen extends StatelessWidget {
               child: TabBar(
                 labelColor: Colors.black,
                 labelStyle: TextStyle(
-                    fontSize: SizeConfig.blockSizeHorizontal * 4.5,
+                    fontSize: tabFontSize,
                     fontFamily: 'OpenSans',
                     fontWeight: FontWeight.bold),
                 tabs: <Widget>[
