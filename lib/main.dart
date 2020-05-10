@@ -203,7 +203,7 @@ class SplashScreen extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: SizeConfig.blockSizeHorizontal * 4.5,
-                color: Colors.amber,
+                color: Colors.amberAccent,
                 letterSpacing: 2.0,
                 fontFamily: logofont,
               ),
