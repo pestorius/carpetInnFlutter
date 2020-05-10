@@ -89,7 +89,7 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
         padding: const EdgeInsets.only(bottom: 4.0),
         child: Text(detail,
             style: TextStyle(
-                fontSize: SizeConfig.blockSizeHorizontal * 4.6,
+                fontSize: SizeConfig.blockSizeHorizontal * 4,
                 fontFamily: 'OpenSans')),
       );
     }
@@ -169,7 +169,7 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
                 Align(
                   alignment: Alignment.topLeft,
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 8.0, left: 15.0),
+                    padding: const EdgeInsets.only(top: 4.0, left: 15.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
@@ -178,7 +178,7 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
                           child: Text(
                             'Details',
                             style: TextStyle(
-                                fontSize: SizeConfig.blockSizeHorizontal * 7.5,
+                                fontSize: SizeConfig.blockSizeHorizontal * 6.5,
                                 fontFamily: pageFont),
                           ),
                         ),
