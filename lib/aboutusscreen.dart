@@ -33,7 +33,7 @@ class AboutUsScreen extends StatelessWidget {
         title: Text(
           'About Us',
           style: TextStyle(
-              fontFamily: 'OpenSans', color: Colors.black, fontSize: 22.0),
+              fontFamily: 'OpenSans', color: Colors.black, fontSize: 24.0),
         ),
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(color: Colors.black),
