@@ -77,7 +77,7 @@ class FavoritesScreenState extends State<FavoritesScreen> {
         title: Text(
           'Favorites',
           style: TextStyle(
-              color: Colors.black, fontSize: 22.0, fontFamily: 'OpenSans'),
+              color: Colors.black, fontSize: 24.0, fontFamily: 'OpenSans'),
         ),
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(color: Colors.black),

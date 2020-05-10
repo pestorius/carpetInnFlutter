@@ -33,7 +33,7 @@ class AboutUsScreen extends StatelessWidget {
         title: Text(
           'About Us',
           style: TextStyle(
-              fontFamily: 'OpenSans', color: Colors.black, fontSize: 22.0),
+              fontFamily: 'OpenSans', color: Colors.black, fontSize: 24.0),
         ),
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(color: Colors.black),
@@ -47,7 +47,7 @@ class AboutUsScreen extends StatelessWidget {
               Text(
                 'Contact Us',
                 style: TextStyle(
-                    fontSize: SizeConfig.blockSizeHorizontal * 6,
+                    fontSize: SizeConfig.blockSizeHorizontal * 5.6,
                     fontFamily: 'OpenSans'),
               ),
               Text(
@@ -61,7 +61,7 @@ class AboutUsScreen extends StatelessWidget {
                 child: Text(
                   'Website',
                   style: TextStyle(
-                      fontSize: SizeConfig.blockSizeHorizontal * 6,
+                      fontSize: SizeConfig.blockSizeHorizontal * 5.6,
                       fontFamily: 'OpenSans'),
                 ),
               ),
@@ -83,7 +83,7 @@ class AboutUsScreen extends StatelessWidget {
                 child: Text(
                   'Social Media',
                   style: TextStyle(
-                      fontSize: SizeConfig.blockSizeHorizontal * 6,
+                      fontSize: SizeConfig.blockSizeHorizontal * 5.6,
                       fontFamily: 'OpenSans'),
                 ),
               ),
@@ -158,7 +158,7 @@ class AboutUsScreen extends StatelessWidget {
                 child: Text(
                   'Address',
                   style: TextStyle(
-                      fontSize: SizeConfig.blockSizeHorizontal * 6,
+                      fontSize: SizeConfig.blockSizeHorizontal * 5.6,
                       fontFamily: 'OpenSans'),
                 ),
               ),
@@ -173,7 +173,7 @@ class AboutUsScreen extends StatelessWidget {
                 child: Text(
                   'Navigate to Gallery',
                   style: TextStyle(
-                      fontSize: SizeConfig.blockSizeHorizontal * 6,
+                      fontSize: SizeConfig.blockSizeHorizontal * 5.6,
                       fontFamily: 'OpenSans'),
                 ),
               ),
@@ -208,13 +208,13 @@ class AboutUsScreen extends StatelessWidget {
               Align(
                 alignment: Alignment.bottomRight,
                 child: Container(
-                    width: SizeConfig.blockSizeHorizontal * 40,
+                    width: SizeConfig.blockSizeHorizontal * 35,
                     alignment: Alignment.bottomRight,
                     child: Text(
                       '* Icons made by Pixel Perfect & Freepik from www.flaticon.com',
                       textAlign: TextAlign.right,
                       style: TextStyle(
-                          fontSize: SizeConfig.blockSizeHorizontal * 2.7),
+                          fontSize: SizeConfig.blockSizeHorizontal * 2.2),
                     )),
               ),
             ],
