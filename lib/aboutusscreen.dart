@@ -47,7 +47,7 @@ class AboutUsScreen extends StatelessWidget {
               Text(
                 'Contact Us',
                 style: TextStyle(
-                    fontSize: SizeConfig.blockSizeHorizontal * 6,
+                    fontSize: SizeConfig.blockSizeHorizontal * 5.6,
                     fontFamily: 'OpenSans'),
               ),
               Text(
@@ -61,7 +61,7 @@ class AboutUsScreen extends StatelessWidget {
                 child: Text(
                   'Website',
                   style: TextStyle(
-                      fontSize: SizeConfig.blockSizeHorizontal * 6,
+                      fontSize: SizeConfig.blockSizeHorizontal * 5.6,
                       fontFamily: 'OpenSans'),
                 ),
               ),
@@ -83,7 +83,7 @@ class AboutUsScreen extends StatelessWidget {
                 child: Text(
                   'Social Media',
                   style: TextStyle(
-                      fontSize: SizeConfig.blockSizeHorizontal * 6,
+                      fontSize: SizeConfig.blockSizeHorizontal * 5.6,
                       fontFamily: 'OpenSans'),
                 ),
               ),
@@ -158,7 +158,7 @@ class AboutUsScreen extends StatelessWidget {
                 child: Text(
                   'Address',
                   style: TextStyle(
-                      fontSize: SizeConfig.blockSizeHorizontal * 6,
+                      fontSize: SizeConfig.blockSizeHorizontal * 5.6,
                       fontFamily: 'OpenSans'),
                 ),
               ),
@@ -173,7 +173,7 @@ class AboutUsScreen extends StatelessWidget {
                 child: Text(
                   'Navigate to Gallery',
                   style: TextStyle(
-                      fontSize: SizeConfig.blockSizeHorizontal * 6,
+                      fontSize: SizeConfig.blockSizeHorizontal * 5.6,
                       fontFamily: 'OpenSans'),
                 ),
               ),
