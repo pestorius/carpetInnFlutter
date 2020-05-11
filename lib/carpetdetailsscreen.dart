@@ -292,7 +292,7 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
             alignment: Alignment.bottomCenter,
             child: Container(
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.3,
+              height: MediaQuery.of(context).size.height * 0.25,
               color: Colors.white,
               child: Column(
                 children: [
@@ -374,7 +374,6 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
                         type: MaterialType.transparency,
                         child: InkWell(
                           onTap: () {
-                            //_launchMessage('sms:+60123372788');
                             _sendSMS('Code: $code\nHi, I\'d like to enquire about this rug.', ['+60123372788']);
                           },
                           child: Container(
@@ -453,14 +452,6 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
   }
 
   _launchCaller(String number) async {
-    if (await canLaunch(number)) {
-      await launch(number);
-    } else {
-      throw 'Could not launch $number';
-    }
-  }
-
-  _launchMessage(String number) async {
     if (await canLaunch(number)) {
       await launch(number);
     } else {
