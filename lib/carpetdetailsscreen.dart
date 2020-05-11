@@ -23,8 +23,6 @@ class SizeConfig {
     screenHeight = _mediaQueryData.size.height;
     blockSizeHorizontal = screenWidth / 100;
     blockSizeVertical = screenHeight / 100;
-    print(screenWidth);
-    print(screenHeight);
   }
 }
 
@@ -49,7 +47,6 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
     super.initState();
     storage.readFavorites().then((String value) {
       favoritesMap = json.decode(value);
-      print(favoritesMap);
       setState(() {
         if (favoritesMap.containsKey(carpet['id'])) {
           isFavorited = true;
@@ -112,7 +109,6 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
                       });
                       favoritesMap.remove(carpet['id']);
                       storage.writeFavorites(json.encode(favoritesMap));
-                      print(favoritesMap);
                     },
                   )
                 : IconButton(
@@ -128,7 +124,6 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
                       });
                       favoritesMap[carpet['id']] = carpet;
                       storage.writeFavorites(json.encode(favoritesMap));
-                      print(favoritesMap);
                     },
                   )
           ],
@@ -208,26 +203,6 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
                         ]),
                       ],
                     ),
-//                    child: Column(
-//                      crossAxisAlignment: CrossAxisAlignment.start,
-//                      children: <Widget>[
-//                        Padding(
-//                          padding: const EdgeInsets.only(bottom: 7.0),
-//                          child: Text(
-//                            'Details',
-//                            style: TextStyle(
-//                                fontSize: SizeConfig.blockSizeHorizontal * 6.5,
-//                                fontFamily: pageFont),
-//                          ),
-//                        ),
-//                        designTextWidget('Design: $design'),
-//                        designTextWidget('Size: $size cm'),
-//                        designTextWidget('Code: $code'),
-//                        designTextWidget('Origin: $origin'),
-//                        designTextWidget('Material: $material'),
-//                        designTextWidget('Knot Count: $knotCount'),
-//                      ],
-//                    ),
                   ),
                 ),
               ],
