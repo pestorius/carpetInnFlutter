@@ -170,26 +170,64 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
                   alignment: Alignment.topLeft,
                   child: Padding(
                     padding: const EdgeInsets.only(top: 4.0, left: 15.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 7.0),
-                          child: Text(
+                    child: Table(
+                      columnWidths: {1: FractionColumnWidth(.73)},
+                      children: [
+                        TableRow(children: [
+                          Text(
                             'Details',
                             style: TextStyle(
                                 fontSize: SizeConfig.blockSizeHorizontal * 6.5,
                                 fontFamily: pageFont),
                           ),
-                        ),
-                        designTextWidget('Design: $design'),
-                        designTextWidget('Size: $size cm'),
-                        designTextWidget('Code: $code'),
-                        designTextWidget('Origin: $origin'),
-                        designTextWidget('Material: $material'),
-                        designTextWidget('Knot Count: $knotCount'),
+                          Text('')
+                        ]),
+                        TableRow(children: [
+                          designTextWidget('Design:'),
+                          designTextWidget(design),
+                        ]),
+                        TableRow(children: [
+                          designTextWidget('Size:'),
+                          designTextWidget('$size cm'),
+                        ]),
+                        TableRow(children: [
+                          designTextWidget('Code:'),
+                          designTextWidget(code),
+                        ]),
+                        TableRow(children: [
+                          designTextWidget('Origin:'),
+                          designTextWidget(origin),
+                        ]),
+                        TableRow(children: [
+                          designTextWidget('Material:'),
+                          designTextWidget(material),
+                        ]),
+                        TableRow(children: [
+                          designTextWidget('Knot Count:'),
+                          designTextWidget(knotCount),
+                        ]),
                       ],
                     ),
+//                    child: Column(
+//                      crossAxisAlignment: CrossAxisAlignment.start,
+//                      children: <Widget>[
+//                        Padding(
+//                          padding: const EdgeInsets.only(bottom: 7.0),
+//                          child: Text(
+//                            'Details',
+//                            style: TextStyle(
+//                                fontSize: SizeConfig.blockSizeHorizontal * 6.5,
+//                                fontFamily: pageFont),
+//                          ),
+//                        ),
+//                        designTextWidget('Design: $design'),
+//                        designTextWidget('Size: $size cm'),
+//                        designTextWidget('Code: $code'),
+//                        designTextWidget('Origin: $origin'),
+//                        designTextWidget('Material: $material'),
+//                        designTextWidget('Knot Count: $knotCount'),
+//                      ],
+//                    ),
                   ),
                 ),
               ],
