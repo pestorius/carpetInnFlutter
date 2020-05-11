@@ -16,8 +16,6 @@ class SizeConfig {
     screenHeight = _mediaQueryData.size.height;
     blockSizeHorizontal = screenWidth / 100;
     blockSizeVertical = screenHeight / 100;
-    print(screenWidth);
-    print(screenHeight);
   }
 }
 
@@ -243,6 +241,25 @@ class CarpetSearch extends SearchDelegate {
           suggestionsList[i]: imageList[i]
       };
       suggestionsList.sort();
+      var sequenceMatchCount = 0;
+      // show results that match index-wise first
+      for (var i = 0; i < suggestionsList.length; i++) {
+        if (suggestionsList[i][0] == query[0]) {
+          sequenceMatchCount++;
+          for (var j = 0; j < query.length; j++) {
+            if (suggestionsList[i][j] == query[j]) {
+              var code = suggestionsList[i];
+              suggestionsList.removeAt(i);
+              suggestionsList.insert(0, code);
+            } else {
+              continue;
+            }
+          }
+        }
+      }
+      // Sorts [list] between [start] (inclusive) and [end] (exclusive).
+      if (sequenceMatchCount > 0)
+        suggestionsList.setRange(0, sequenceMatchCount, suggestionsList.sublist(0, sequenceMatchCount)..sort());
       imageList = [
         for (var suggestion in suggestionsList) mappings[suggestion]
       ];
@@ -250,7 +267,6 @@ class CarpetSearch extends SearchDelegate {
 
     // return two different types of lists depending on search type
     if (isNumeric(query)) {
-      print(combinedList[0]);
       return ListView.separated(
           itemBuilder: (BuildContext context, int index) {
             return InkWell(
