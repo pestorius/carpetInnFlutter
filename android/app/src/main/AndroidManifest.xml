@@ -12,7 +12,7 @@
         android:name="io.flutter.app.FlutterApplication"
         android:label="Carpet Inn"
         android:roundIcon="@mipmap/app_logo"
-        android:icon="@mipmap/app_logo">
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
