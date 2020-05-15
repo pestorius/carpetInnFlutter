@@ -468,7 +468,7 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
   }
 
   void _launchWhatsapp(var code) async {
-    String phoneNumber = '+60123372788';
+    String phoneNumber = '60123372788';
     String message = Uri.encodeFull('Code: $code\nHi, I\'d like to enquire about this rug.');
     var whatsappUrl = "whatsapp://send?phone=$phoneNumber&text=$message";
     if (await canLaunch(whatsappUrl)) {
