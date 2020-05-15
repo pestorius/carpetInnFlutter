@@ -93,7 +93,7 @@ class SearchScreen extends StatelessWidget {
                   padding: EdgeInsets.only(left: 15.0),
                   child: Text(
                     'Search for a design or code',
-                    style: TextStyle(fontSize: 20.0, color: Colors.grey[600]),
+                    style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 4.5, color: Colors.grey[600]),
                   ),
                 )
               ],
