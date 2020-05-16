@@ -93,7 +93,9 @@ class SearchScreen extends StatelessWidget {
                   padding: EdgeInsets.only(left: 15.0),
                   child: Text(
                     'Search for a design or code',
-                    style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 4.5, color: Colors.grey[600]),
+                    style: TextStyle(
+                        fontSize: SizeConfig.blockSizeHorizontal * 4.5,
+                        color: Colors.grey[600]),
                   ),
                 )
               ],
@@ -259,7 +261,8 @@ class CarpetSearch extends SearchDelegate {
       }
       // Sorts [list] between [start] (inclusive) and [end] (exclusive).
       if (sequenceMatchCount > 0)
-        suggestionsList.setRange(0, sequenceMatchCount, suggestionsList.sublist(0, sequenceMatchCount)..sort());
+        suggestionsList.setRange(0, sequenceMatchCount,
+            suggestionsList.sublist(0, sequenceMatchCount)..sort());
       imageList = [
         for (var suggestion in suggestionsList) mappings[suggestion]
       ];
@@ -290,16 +293,18 @@ class CarpetSearch extends SearchDelegate {
                       width: SizeConfig.blockSizeHorizontal * 10,
                       fit: BoxFit.fill,
                       placeholder: (context, url) =>
-                      new CircularProgressIndicator(),
+                          new CircularProgressIndicator(),
                       imageUrl: imageList[index],
-                      errorWidget: (context, url, error) => new Icon(Icons.error),
+                      errorWidget: (context, url, error) =>
+                          new Icon(Icons.error),
                     ),
                   ],
                 ),
               ),
             );
           },
-          separatorBuilder: (BuildContext context, int index) => const Divider(),
+          separatorBuilder: (BuildContext context, int index) =>
+              const Divider(),
           itemCount: suggestionsList.length);
     } else {
       return ListView.separated(
@@ -321,7 +326,8 @@ class CarpetSearch extends SearchDelegate {
               ),
             );
           },
-          separatorBuilder: (BuildContext context, int index) => const Divider(),
+          separatorBuilder: (BuildContext context, int index) =>
+              const Divider(),
           itemCount: suggestionsList.length);
     }
   }

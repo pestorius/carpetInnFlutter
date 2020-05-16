@@ -374,7 +374,9 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
                         type: MaterialType.transparency,
                         child: InkWell(
                           onTap: () {
-                            _sendSMS('Code: $code\nHi, I\'d like to enquire about this rug.', ['+60123372788']);
+                            _sendSMS(
+                                'Code: $code\nHi, I\'d like to enquire about this rug.',
+                                ['+60123372788']);
                           },
                           child: Container(
                             child: Column(
@@ -469,7 +471,8 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
 
   void _launchWhatsapp(var code) async {
     String phoneNumber = '60123372788';
-    String message = Uri.encodeFull('Code: $code\nHi, I\'d like to enquire about this rug.');
+    String message =
+        Uri.encodeFull('Code: $code\nHi, I\'d like to enquire about this rug.');
     var whatsappUrl = "whatsapp://send?phone=$phoneNumber&text=$message";
     if (await canLaunch(whatsappUrl)) {
       await launch(whatsappUrl);
