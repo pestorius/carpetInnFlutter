@@ -1,4 +1,5 @@
 import 'package:carpetinn_flutter/carpetImageScreen.dart';
+import 'package:carpetinn_flutter/threedviewscreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
@@ -95,6 +96,20 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
         appBar: AppBar(
           brightness: Brightness.light,
           actions: <Widget>[
+            IconButton(
+              tooltip: '3D View',
+              icon: const Icon(
+                Icons.aspect_ratio,
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          Threedviewscreen()),
+                );
+              },
+            ),
             isFavorited
                 ? IconButton(
                     tooltip: 'Unfavorite',
@@ -125,7 +140,7 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
                       favoritesMap[carpet['id']] = carpet;
                       storage.writeFavorites(json.encode(favoritesMap));
                     },
-                  )
+                  ),
           ],
           backgroundColor: Colors.white,
           iconTheme: IconThemeData(color: Colors.black),
