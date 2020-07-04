@@ -106,7 +106,7 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          Threedviewscreen()),
+                          Threedviewscreen(carpetImage: carpetImage)),
                 );
               },
             ),
