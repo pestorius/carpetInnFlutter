@@ -51,6 +51,7 @@ dev_dependencies:
   flutter_statusbarcolor: 0.2.3
   fluttertoast: 4.0.1
   flutter_launcher_icons: ^0.7.5
+  image_picker: ^0.6.7+3
 
 flutter_icons:
   android: false
