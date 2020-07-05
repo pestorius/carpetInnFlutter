@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:photo_view/photo_view.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:async';
+import 'dart:io';
 
 class SizeConfig {
   static MediaQueryData _mediaQueryData;
@@ -17,9 +19,29 @@ class SizeConfig {
   }
 }
 
-class Threedviewscreen extends StatelessWidget {
+class Threedviewscreen extends StatefulWidget {
   Threedviewscreen({Key key, this.carpetImage}) : super(key: key);
   final dynamic carpetImage;
+
+  @override
+  _ThreedviewscreenState createState() =>
+      _ThreedviewscreenState(carpetImage: carpetImage);
+}
+
+class _ThreedviewscreenState extends State<Threedviewscreen> {
+  _ThreedviewscreenState({Key key, this.carpetImage});
+  final dynamic carpetImage;
+  final picker = ImagePicker();
+  File _image;
+
+  Future getImage(bool gallery) async {
+    final pickedFile = await picker.getImage(
+        source: gallery == true ? ImageSource.gallery : ImageSource.camera);
+
+    setState(() {
+      _image = File(pickedFile.path);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,19 +71,15 @@ class Threedviewscreen extends StatelessWidget {
             Text(
               'Carpet Selected:',
               style: TextStyle(
-                fontSize: SizeConfig.blockSizeHorizontal * 5.3,
-                fontFamily: 'OpenSans'
-              ),
+                  fontSize: SizeConfig.blockSizeHorizontal * 5.3,
+                  fontFamily: 'OpenSans'),
             ),
             Container(
-              margin: EdgeInsets.only(top: 15, bottom: 50),
-              height: MediaQuery.of(context).size.height * 0.3,
-              child: PhotoView(
-                backgroundDecoration:
-                BoxDecoration(color: Colors.white),
-                imageProvider: carpetImage,
-              ),
-            ),
+                margin: EdgeInsets.only(top: 15, bottom: 50),
+                height: MediaQuery.of(context).size.height * 0.3,
+                child: Image(
+                  image: carpetImage,
+                )),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
@@ -75,7 +93,9 @@ class Threedviewscreen extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(10.0),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    getImage(true);
+                  },
                   child: Text(
                     'Upload Image',
                     style: TextStyle(
@@ -93,7 +113,9 @@ class Threedviewscreen extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(10.0),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    getImage(false);
+                  },
                   child: Text(
                     'Take A Photo',
                     style: TextStyle(
