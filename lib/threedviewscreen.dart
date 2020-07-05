@@ -1,3 +1,4 @@
+import 'package:carpetinn_flutter/adjustcarpetscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:async';
@@ -40,6 +41,15 @@ class _ThreedviewscreenState extends State<Threedviewscreen> {
 
     setState(() {
       _image = File(pickedFile.path);
+      if (_image != null)
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => Adjustcarpetscreen(
+                    carpetImage: carpetImage,
+                    backgroundImage: _image,
+                  )),
+        );
     });
   }
 
