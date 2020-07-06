@@ -26,7 +26,10 @@ class Adjustcarpetscreen extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      body: Image.file(backgroundImage)
-    );
+        body: Container(
+            width: SizeConfig.screenWidth,
+            height: SizeConfig.screenHeight,
+            color: Colors.black,
+            child: Image.file(backgroundImage)));
   }
 }
