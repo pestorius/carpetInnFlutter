@@ -77,6 +77,7 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
     var origin = carpet['origin'];
     var size = carpet['size'];
     var carpetImage = NetworkImage(carpet['imageUrl']);
+    var carpetTrimmedImage = NetworkImage(carpet['carpetPngUrl']);
 
     //style variables
     var pageFont = 'OpenSans';
@@ -106,7 +107,7 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          Threedviewscreen(carpetImage: carpetImage)),
+                          Threedviewscreen(carpetTrimmedImage: carpetTrimmedImage)),
                 );
               },
             ),

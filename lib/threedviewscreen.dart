@@ -21,17 +21,17 @@ class SizeConfig {
 }
 
 class Threedviewscreen extends StatefulWidget {
-  Threedviewscreen({Key key, this.carpetImage}) : super(key: key);
-  final dynamic carpetImage;
+  Threedviewscreen({Key key, this.carpetTrimmedImage}) : super(key: key);
+  final dynamic carpetTrimmedImage;
 
   @override
   _ThreedviewscreenState createState() =>
-      _ThreedviewscreenState(carpetImage: carpetImage);
+      _ThreedviewscreenState(carpetTrimmedImage: carpetTrimmedImage);
 }
 
 class _ThreedviewscreenState extends State<Threedviewscreen> {
-  _ThreedviewscreenState({Key key, this.carpetImage});
-  final dynamic carpetImage;
+  _ThreedviewscreenState({Key key, this.carpetTrimmedImage});
+  final dynamic carpetTrimmedImage;
   final picker = ImagePicker();
   File _image;
 
@@ -46,7 +46,7 @@ class _ThreedviewscreenState extends State<Threedviewscreen> {
           context,
           MaterialPageRoute(
               builder: (context) => Adjustcarpetscreen(
-                    carpetImage: carpetImage,
+                    carpetTrimmedImage: carpetTrimmedImage,
                     backgroundImage: _image,
                   )),
         );
@@ -88,7 +88,7 @@ class _ThreedviewscreenState extends State<Threedviewscreen> {
                 margin: EdgeInsets.only(top: 15, bottom: 50),
                 height: MediaQuery.of(context).size.height * 0.3,
                 child: Image(
-                  image: carpetImage,
+                  image: carpetTrimmedImage,
                 )),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
