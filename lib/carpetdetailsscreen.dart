@@ -106,8 +106,8 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) =>
-                          Threedviewscreen(carpetTrimmedImage: carpetTrimmedImage)),
+                      builder: (context) => Threedviewscreen(
+                          carpetTrimmedImage: carpetTrimmedImage)),
                 );
               },
             ),
