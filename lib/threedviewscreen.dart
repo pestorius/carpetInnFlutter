@@ -64,78 +64,80 @@ class _ThreedviewscreenState extends State<Threedviewscreen> {
         title: Text('3D Viewer', style: TextStyle(color: Colors.black)),
         centerTitle: true,
       ),
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            Container(
-              margin: EdgeInsets.only(top: 30, bottom: 50),
-              width: SizeConfig.blockSizeHorizontal * 80,
-              child: Text(
-                'Welcome to the 3D Viewer! Use this tool to overlay the selected carpet onto a living space.',
-                style: TextStyle(
-                    fontSize: SizeConfig.blockSizeHorizontal * 4.5,
-                    height: 1.5),
-                textAlign: TextAlign.center,
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.only(top: 30, bottom: 50),
+                width: SizeConfig.blockSizeHorizontal * 80,
+                child: Text(
+                  'Welcome to the 3D Viewer! Use this tool to overlay the selected carpet onto a living space.',
+                  style: TextStyle(
+                      fontSize: SizeConfig.blockSizeHorizontal * 4.5,
+                      height: 1.5),
+                  textAlign: TextAlign.center,
+                ),
               ),
-            ),
-            Text(
-              'Carpet Selected:',
-              style: TextStyle(
-                  fontSize: SizeConfig.blockSizeHorizontal * 5.3,
-                  fontFamily: 'OpenSans'),
-            ),
-            Container(
-                margin: EdgeInsets.only(top: 15, bottom: 50),
-                height: MediaQuery.of(context).size.height * 0.3,
-                child: Image(
-                  image: carpetTrimmedImage,
-                )),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                RaisedButton(
-                  color: Colors.amberAccent,
-                  padding: EdgeInsets.only(
-                      left: SizeConfig.blockSizeHorizontal * 3,
-                      right: SizeConfig.blockSizeHorizontal * 3,
-                      top: 12,
-                      bottom: 12),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(10.0),
+              Text(
+                'Carpet Selected:',
+                style: TextStyle(
+                    fontSize: SizeConfig.blockSizeHorizontal * 5.3,
+                    fontFamily: 'OpenSans'),
+              ),
+              Container(
+                  margin: EdgeInsets.only(top: 15, bottom: 50),
+                  height: MediaQuery.of(context).size.height * 0.3,
+                  child: Image(
+                    image: carpetTrimmedImage,
+                  )),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  RaisedButton(
+                    color: Colors.amberAccent,
+                    padding: EdgeInsets.only(
+                        left: SizeConfig.blockSizeHorizontal * 3,
+                        right: SizeConfig.blockSizeHorizontal * 3,
+                        top: 12,
+                        bottom: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(10.0),
+                    ),
+                    onPressed: () {
+                      getImage(true);
+                    },
+                    child: Text(
+                      'Upload Image',
+                      style: TextStyle(
+                          fontSize: SizeConfig.blockSizeHorizontal * 4.2,
+                          fontFamily: 'OpenSans'),
+                    ),
                   ),
-                  onPressed: () {
-                    getImage(true);
-                  },
-                  child: Text(
-                    'Upload Image',
-                    style: TextStyle(
-                        fontSize: SizeConfig.blockSizeHorizontal * 4.2,
-                        fontFamily: 'OpenSans'),
+                  RaisedButton(
+                    color: Colors.amberAccent,
+                    padding: EdgeInsets.only(
+                        left: SizeConfig.blockSizeHorizontal * 3,
+                        right: SizeConfig.blockSizeHorizontal * 3,
+                        top: 12,
+                        bottom: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(10.0),
+                    ),
+                    onPressed: () {
+                      getImage(false);
+                    },
+                    child: Text(
+                      'Take A Photo',
+                      style: TextStyle(
+                          fontSize: SizeConfig.blockSizeHorizontal * 4.2,
+                          fontFamily: 'OpenSans'),
+                    ),
                   ),
-                ),
-                RaisedButton(
-                  color: Colors.amberAccent,
-                  padding: EdgeInsets.only(
-                      left: SizeConfig.blockSizeHorizontal * 3,
-                      right: SizeConfig.blockSizeHorizontal * 3,
-                      top: 12,
-                      bottom: 12),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(10.0),
-                  ),
-                  onPressed: () {
-                    getImage(false);
-                  },
-                  child: Text(
-                    'Take A Photo',
-                    style: TextStyle(
-                        fontSize: SizeConfig.blockSizeHorizontal * 4.2,
-                        fontFamily: 'OpenSans'),
-                  ),
-                ),
-              ],
-            )
-          ],
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
