@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:async';
 import 'dart:io';
+import 'package:transparent_image/transparent_image.dart';
 
 class SizeConfig {
   static MediaQueryData _mediaQueryData;
@@ -86,11 +87,20 @@ class _ThreedviewscreenState extends State<Threedviewscreen> {
                     fontFamily: 'OpenSans'),
               ),
               Container(
-                  margin: EdgeInsets.only(top: 15, bottom: 50),
-                  height: MediaQuery.of(context).size.height * 0.3,
-                  child: Image(
-                    image: carpetTrimmedImage,
-                  )),
+                margin: EdgeInsets.only(top: 15, bottom: 50),
+                height: SizeConfig.screenHeight * 0.3,
+                child: Stack(
+                  children: <Widget>[
+                    Center(child: CircularProgressIndicator()),
+                    Center(
+                      child: FadeInImage.memoryNetwork(
+                        placeholder: kTransparentImage,
+                        image: carpetTrimmedImage.url,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
