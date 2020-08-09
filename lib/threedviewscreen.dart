@@ -70,12 +70,23 @@ class _ThreedviewscreenState extends State<Threedviewscreen> {
           child: Column(
             children: <Widget>[
               Container(
-                margin: EdgeInsets.only(top: 30, bottom: 50),
+                margin: EdgeInsets.only(top: 30, bottom: 20),
                 width: SizeConfig.blockSizeHorizontal * 80,
                 child: Text(
                   'Welcome to the 3D Viewer! Use this tool to overlay the selected carpet onto a living space.',
                   style: TextStyle(
                       fontSize: SizeConfig.blockSizeHorizontal * 4.5,
+                      height: 1.5),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 0, bottom: 20),
+                width: SizeConfig.blockSizeHorizontal * 80,
+                child: Text(
+                  'Note: This feature is experimental and still needs some tweaking',
+                  style: TextStyle(
+                      fontSize: SizeConfig.blockSizeHorizontal * 3,
                       height: 1.5),
                   textAlign: TextAlign.center,
                 ),
@@ -101,50 +112,53 @@ class _ThreedviewscreenState extends State<Threedviewscreen> {
                   ],
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  RaisedButton(
-                    color: Colors.amberAccent,
-                    padding: EdgeInsets.only(
-                        left: SizeConfig.blockSizeHorizontal * 3,
-                        right: SizeConfig.blockSizeHorizontal * 3,
-                        top: 12,
-                        bottom: 12),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(10.0),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 25.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    RaisedButton(
+                      color: Colors.amberAccent,
+                      padding: EdgeInsets.only(
+                          left: SizeConfig.blockSizeHorizontal * 3,
+                          right: SizeConfig.blockSizeHorizontal * 3,
+                          top: 12,
+                          bottom: 12),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(10.0),
+                      ),
+                      onPressed: () {
+                        getImage(true);
+                      },
+                      child: Text(
+                        'Upload Image',
+                        style: TextStyle(
+                            fontSize: SizeConfig.blockSizeHorizontal * 4.2,
+                            fontFamily: 'OpenSans'),
+                      ),
                     ),
-                    onPressed: () {
-                      getImage(true);
-                    },
-                    child: Text(
-                      'Upload Image',
-                      style: TextStyle(
-                          fontSize: SizeConfig.blockSizeHorizontal * 4.2,
-                          fontFamily: 'OpenSans'),
+                    RaisedButton(
+                      color: Colors.amberAccent,
+                      padding: EdgeInsets.only(
+                          left: SizeConfig.blockSizeHorizontal * 3,
+                          right: SizeConfig.blockSizeHorizontal * 3,
+                          top: 12,
+                          bottom: 12),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(10.0),
+                      ),
+                      onPressed: () {
+                        getImage(false);
+                      },
+                      child: Text(
+                        'Take A Photo',
+                        style: TextStyle(
+                            fontSize: SizeConfig.blockSizeHorizontal * 4.2,
+                            fontFamily: 'OpenSans'),
+                      ),
                     ),
-                  ),
-                  RaisedButton(
-                    color: Colors.amberAccent,
-                    padding: EdgeInsets.only(
-                        left: SizeConfig.blockSizeHorizontal * 3,
-                        right: SizeConfig.blockSizeHorizontal * 3,
-                        top: 12,
-                        bottom: 12),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(10.0),
-                    ),
-                    onPressed: () {
-                      getImage(false);
-                    },
-                    child: Text(
-                      'Take A Photo',
-                      style: TextStyle(
-                          fontSize: SizeConfig.blockSizeHorizontal * 4.2,
-                          fontFamily: 'OpenSans'),
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               )
             ],
           ),
