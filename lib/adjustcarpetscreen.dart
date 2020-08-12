@@ -53,6 +53,13 @@ class AdjustcarpetscreenState extends State<Adjustcarpetscreen> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          brightness: Brightness.light,
+          iconTheme: IconThemeData(color: Colors.black),
+          title: Text('3D Viewer', style: TextStyle(color: Colors.black)),
+          centerTitle: true,
+        ),
         body: Stack(children: <Widget>[
       Container(
           width: SizeConfig.screenWidth,
