@@ -215,7 +215,7 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
                         ]),
                         TableRow(children: [
                           designTextWidget('Knot Count:'),
-                          designTextWidget(knotCount),
+                          designTextWidget('$knotCount kpsi'),
                         ]),
                       ],
                     ),
