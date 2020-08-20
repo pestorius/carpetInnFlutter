@@ -97,51 +97,84 @@ class CarpetDetailScreenState extends State<CarpetDetailScreen> {
         appBar: AppBar(
           brightness: Brightness.light,
           actions: <Widget>[
-            IconButton(
-              tooltip: '3D View',
-              icon: const Icon(
-                Icons.aspect_ratio,
-              ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => Threedviewscreen(
-                          carpetTrimmedImage: carpetTrimmedImage)),
-                );
-              },
-            ),
-            isFavorited
-                ? IconButton(
-                    tooltip: 'Unfavorite',
-                    icon: const Icon(
-                      Icons.star,
-                      color: Colors.amberAccent,
-                      size: 35.0,
+            Container(
+              decoration: BoxDecoration(),
+              //border: Border.all(color: Colors.blueAccent, width: 3)),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(left: 9.0),
+                    child: Tooltip(
+                      message: '3D Viewer',
+                      child: ButtonTheme(
+                        minWidth: 30,
+                        child: FlatButton(
+                          child: Text(
+                            '3D',
+                            textAlign: TextAlign.right,
+                            style: TextStyle(
+                                fontFamily: 'OpenSans',
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                fontStyle: FontStyle.italic,
+                                color: Colors.black),
+                          ),
+                          shape: CircleBorder(
+                              side: BorderSide(color: Colors.transparent)),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Threedviewscreen(
+                                      carpetTrimmedImage: carpetTrimmedImage)),
+                            );
+                          },
+                        ),
+                      ),
                     ),
-                    onPressed: () {
-                      setState(() {
-                        isFavorited = false;
-                      });
-                      favoritesMap.remove(carpet['id']);
-                      storage.writeFavorites(json.encode(favoritesMap));
-                    },
-                  )
-                : IconButton(
-                    tooltip: 'Favorite',
-                    icon: const Icon(
-                      Icons.star_border,
-                      color: Colors.amberAccent,
-                      size: 35.0,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        isFavorited = true;
-                      });
-                      favoritesMap[carpet['id']] = carpet;
-                      storage.writeFavorites(json.encode(favoritesMap));
-                    },
                   ),
+                  isFavorited
+                      ? Padding(
+                          padding: const EdgeInsets.only(bottom: 4.0),
+                          child: IconButton(
+                            tooltip: 'Unfavorite',
+                            icon: const Icon(
+                              Icons.star,
+                              color: Colors.amberAccent,
+                              size: 35.0,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                isFavorited = false;
+                              });
+                              favoritesMap.remove(carpet['id']);
+                              storage.writeFavorites(json.encode(favoritesMap));
+                            },
+                          ),
+                        )
+                      : Padding(
+                          padding: const EdgeInsets.only(bottom: 4.0),
+                          child: IconButton(
+                            tooltip: 'Favorite',
+                            icon: const Icon(
+                              Icons.star_border,
+                              color: Colors.amberAccent,
+                              size: 35.0,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                isFavorited = true;
+                              });
+                              favoritesMap[carpet['id']] = carpet;
+                              storage.writeFavorites(json.encode(favoritesMap));
+                            },
+                          ),
+                        ),
+                ],
+              ),
+            ),
           ],
           backgroundColor: Colors.white,
           iconTheme: IconThemeData(color: Colors.black),
